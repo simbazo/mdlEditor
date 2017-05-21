@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # editor2
 New editor for appenberg
 
@@ -36,6 +35,3 @@ phpunit.xml
 Happy Coding and Reviews. Dont forget to drop me any email or whatsapp in case having trouble
 
 Jacinto Joao (JJ)
-=======
-# mdlEditor
->>>>>>> 1ea410e3d58a159ea861daaa72325e1ba79baf5b
