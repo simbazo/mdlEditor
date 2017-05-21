@@ -1,0 +1,42 @@
+            <table class="table  tree-2  table-fixed" id="yourTable">
+            <thead>
+                        <tr>
+                            <th style="width: 2%"></th>
+                            <th class="tr-previewd list-iconclass"><!--<p class="non pen">{{trans('Sibling')}}</p>--></th>
+                            <th class="list-nameclass" style="width: 30%">{{trans('application.name')}} </th>
+                            <th class="tr-previewd list-iconclass" style="width: 13%"><!--<p class="non pen">Child</p>--></th>
+                            <th class="tr-previewd list-iconclass">{{trans('Act')}}</th>
+                            <th class="tr-previewd " style="width: 30%">{{trans('application.updated_at')}}</th>
+                        </tr>
+                        </thead>
+                        <tbody id="fbody">
+                          
+                
+                        </tbody>       
+            </table>
+
+
+            <!-- Js code mixed with blade do i use to populate the table--->
+
+            f1();
+            $('.tree-2').treegrid({
+                initialState: 'collapsed',
+                expanderExpandedClass: 'icon-minus',
+                expanderCollapsedClass: 'icon-plus',
+            });
+            function f1() {
+              var m = 1, line = '';
+                for (i = 1; i < 3; i++) {
+                    m = i + 1;
+                    if (i == 1) {
+                        line = '<tr class="treegrid-' + m + ' clickable-row">'
+                          + '<td></td><td>{!!node1_btn('projectcontent.edit',$content->uuid)!!}</td><td class="list-iconclass"><input type="hidden" class="node-uuid" name="parent-node-id" value="{{$content->uuid}}"><a  data-type="text" data-rel="tooltip" data-placement="top" data-pk="{{$content->uuid}}" data-url="{{route('node',$content->uuid)}}"  href="#" class="aeditable">{{$content->name or ''}} <i class="fa fa-pencil btn-editable" style="display:none;"></a></td><td> {!!node_btn('projectcontent.edit',$content->uuid)!!}</td><td class="preview-enable tr-previewd">@if(!count($content->childs)) {!!doc_null_btn('projectcontent.edit',$content->uuid)!!} {!!doc_none_btn('projectcontent.edit',$content->uuid)!!} {!!doc_edit_btn('projectcontent.edit',$content->uuid)!!} @else {!!doc_null_btn('projectcontent.edit',$content->uuid)!!} @endif</td><td class="preview-enable tr-previewd">{{$content->updated_at}}</td></tr>';
+                    }
+                    else { 
+                        line = '@foreach($childs as $child)<tr class="treegrid-' + m + ' treegrid-parent-' + i + ' clickable-row">'
+                          + '<td></td><td class="list-iconclass">{!!node1_btn('projectcontent.edit',$child->uuid)!!}</td><td >&nbsp; <input type="hidden" class="node-uuid" name="parent-node-id" value="{{$child->uuid}}"><a  data-type="text" data-rel="tooltip" data-placement="top" title="Edit Header" data-pk="{{$child->uuid}}" data-url="{{route('node',$child->uuid)}}"  href="#" class="aeditable active">{{$child->name or ''}} <i class="fa fa-pencil btn-editable" style="display:none;"></i> &nbsp;</a></td><td> @if(count($child->content->Content)) {!!preview_btn('preview',$child->ContentStart_ID)!!} @endif {!!node_btn('projectcontent.edit',$child->uuid)!!} </td><td class="tr-previewd">@if(!count($child->childs)) @if(is_null($child->ContentStart_ID)) {!!doc_null_btn('projectcontent.edit',$child->uuid)!!} @elseif(is_null($child->content->Content)){!!doc_none_btn('projectcontent.edit',$child->ContentStart_ID)!!} @else {!!doc_edit_btn('projectcontent.edit',$child->ContentStart_ID)!!} @endif @endif </td><td class="tr-previewd">{{$child->content->updated_at}}</td></tr>@endforeach';
+                    }
+
+                    $('.tree-2').append(line);
+                }
+            }
