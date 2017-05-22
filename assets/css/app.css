@@ -180,12 +180,14 @@ hr {
     padding: 30px 15px;
   }
 }
+.nav-tabs{
+  back
+}
 .nav-tabs > li > a {
   font-weight: bold;
   color: #515253;
-  background-color: #edf1f2;
+  background-color: #5d9cec !important;
   margin: 0;
-  border: 1px solid #dde6e9;
   border-radius: 0;
   padding: 10px 20px;
 }
@@ -194,7 +196,9 @@ hr {
 .nav-tabs > li.active > a:focus {
   color: inherit;
   border-bottom-color: #fff;
+  background-color: #ee3d3d !important;
 }
+
 .tab-content {
   padding: 10px 20px;
   border-style: solid;
