@@ -30,17 +30,13 @@
       </div>
       {!! Form::close() !!}
     </div>
-  
-              
-
-
-
+   
 
     <div class="col-md-12">
       <br><br>
       <div class="list-group" id="sortable">
         @foreach($product->questions as $question)
-        <li class="list-group-item">{{$question->name}} <span class="pull-right">{!!delete_btn('products.edit',$product->uuid)!!}</span></li>
+        <li class="list-group-item">{{$question->name}} <!--<a href="{{ route('farmer.farm',$question->uuid) }}" class="btn btn-danger btn-xs btn-delete pull-right" data-toggle="ajax-modal"> <i class="fa fa-trash"></i></a>--></li>
         @endforeach
       </div>
     </div>

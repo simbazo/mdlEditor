@@ -6,13 +6,10 @@
     <section class="content" id="ajaxcontent">
 <div class="row">
     <div class="col-md-12 box">
-        <div class="panel panel-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title pull-right">
-                        <div class="box-tools">
-                            <a href="{{ route('tasks.create') }}" class="btn btn-primary btn-xs pull-right" data-toggle="ajax-modal"> <i class="fa fa-list"></i> {{trans('application.new_task')}}</a>
-                        </div>
-                    </h3>
+        <div class="panel panel-primary">
+                <div class="panel-heading">
+                Tasks List
+                <a href="{{ route('tasks.create') }}" class="btn btn-primary btn-xs pull-right active" data-toggle="ajax-modal"> <i class="fa fa-plus-square-o"></i> {{trans('application.new_task')}}</a>
                 </div>
             <div class="panel-body">
                     <table class="table table-striped table-hover dataTable datatable dtr-inline collapsed" role="grid" aria-describedby="datatable2_info" style="width: 988px;">

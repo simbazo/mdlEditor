@@ -10,13 +10,13 @@ trait NestebleProjectTrait {
 		$projects = $this->projects();
 
 
-		$grouped = $projects->get()->groupBy('Parent_ID');
+		$grouped = $projects->select('uuid','name','Parent_ID','ContentStart_ID')->get()->groupBy('Parent_ID');
 
 		$root = $grouped->get($id)->forPage($page, $perPage);
 
 		$ids = $this->buildIdNest($root, $grouped);	
 
-		$grouped = $projects->whereIn('uuid',$ids)->with(['nodes.nodes.nodes.nodes.nodes.nodes.nodes'])->get()->groupBy('Parent_ID');
+		$grouped = $projects->whereIn('uuid',$ids)->with(['children.children.children.children.children.children.children'])->get()->groupBy('Parent_ID');
 
 		$root = $grouped->get($id);
 

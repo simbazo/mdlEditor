@@ -82,7 +82,7 @@ class ProjectController extends Controller
     }
     public function json(){
         $page = $this->request->get('page',1);
-        $perPage = 200;
+        $perPage = 5;
         $projects = Project::find(65);
 
         $childs = $projects->nestedProject($projects->uuid,$page, $perPage);
@@ -96,7 +96,7 @@ class ProjectController extends Controller
             ['path'=>$this->request->url(),'query'=>$this->request->query()]    
             );*/
 
-        return response()->json($childs);
+        return response()->json(['data'=>$childs->toArray()],201);
     }
     public function json2(){
         

@@ -23,8 +23,8 @@ class Project extends Model
      public function childs(){
         return $this->hasMany(\App\Models\Project::class,'Parent_ID');
     }
-    public function nodes(){
-    	return $this->hasMany(\App\Models\Project::class,'Parent_ID');
+    public function children(){
+    	return $this->hasMany(\App\Models\Project::class,'Parent_ID')->select(['uuid','name','Parent_ID','ContentStart_ID']);
     }
 
     public function users(){

@@ -112,7 +112,15 @@ class ProductsController extends Controller
     }
     public function questions(Request $request){
         $product = $this->product->getById($request->get('product_id'));
-        $product->questions()->attach($request->get('question_id'));
+        $product->questions()->syncWithoutDetaching([$request->get('question_id')]); 
+        if($product){
+            return $this->preview($product->id);
+        }
+        return response()->json('something went wrong');
+    }
+    public function questionsdetach(Request $request){
+        $product = $this->product->getById($request->get('product_id'));
+        $product->questions()->syncWithoutDetaching([$request->get('question_id')]); 
         if($product){
             return $this->preview($product->id);
         }

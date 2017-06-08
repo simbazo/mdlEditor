@@ -20,6 +20,9 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::get('/', 'HomeController@index')->name('dashboard');
 	Route::post('/profile', 'Web\UsersController@profile')->name('profile');
 	Route::post('/productquestion','Editor\ProductsController@questions')->name('productquestion');
+	
+	Route::post('/questionsdetach','Editor\ProductsController@questionsdetach')->name('questionsdetach');
+
 	Route::get('jquery-tree-view','Web\TreeController@treeView');
 	Route::get('inline','Web\ContentController@inline')->name('inline');
 	Route::get('treecontent/{id}','Web\ContentController@content');
@@ -48,16 +51,24 @@ Route::group(['middleware'=>'auth'],function(){
 		'files'			=>'Editor\FilesController',
 		'formbuilder'	=>'Editor\FormBuilderController'
 	]);
-	Route::group(['prefix'=>'settings'],function(){
-		Route::resource('producttypes','Editor\ProductTypesController');
+
+	Route::group(['prefix'=>'forms','namespace'=>'Forms'], function(){
+		Route::resources([
+			'/'			=>'FormsController',
+			'farmers'	=>'FarmersController',
+			'farms'		=>'FarmsController',
+			'farmtype'	=>'FarmTypesController',
+			'ngos'		=>'NgosController',
+			'ngotype'	=>'NgoTypesController',
+			'races'		=>'RaceController',
+			'sponsors'	=>'SponsorsController',
+			'gender'	=>'GenderController'	
+		]);
+	Route::get('farmer/farm/{id}','FarmersController@farm')->name('farmer.farm');
+	Route::post('farmer/farm/{id}','FarmersController@addFarms');
 	});
 
-	/*community chest url*/
-
-	Route::group(['prefix'=>'cc'],function(){
-		Route::resources([
-			'ngos'	=>'CommunityChest\Ngo\NgosController',
-			'sponsors'	=>'CommunityChest\Sponsors\SponsorsController',	
-			]);
+	Route::group(['prefix'=>'settings'],function(){
+		Route::resource('producttypes','Editor\ProductTypesController');
 	});
 });

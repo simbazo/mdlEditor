@@ -5,14 +5,11 @@
 <div class="col-md-12">
     <section class="content" id="ajaxcontent">
 <div class="row">
-    <div class="col-md-12 box">
-        <div class="panel panel-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title pull-right">
-                        <div class="box-tools">
-                            <a href="{{ route('users.create') }}" class="btn btn-primary btn-xs pull-right" data-toggle="ajax-modal"> <i class="fa fa-user-plus"></i> {{trans('application.new_user')}}</a>
-                        </div>
-                    </h3>
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+                <div class="panel-heading">
+                   Users List 
+                   <a href="{{ route('users.create') }}" class="btn btn-primary btn-xs pull-right active" data-toggle="ajax-modal"><i class="fa fa-plus-square-o"></i> {{trans('application.new_user')}}</a>
                 </div>
             <div class="panel-body">
                     <table class="table table-striped table-hover dataTable datatable dtr-inline collapsed" role="grid" aria-describedby="datatable2_info" style="width: 988px;">

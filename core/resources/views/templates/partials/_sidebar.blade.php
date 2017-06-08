@@ -67,60 +67,18 @@
                         <em class="fa fa-file-pdf-o"></em>
                         <span data-localize="sidebar.nav.Tasks">Files</span>
                      </a>
-                  </li><!--
-                  <li class="{{ Request::is('formbuilder') ? 'active' : '' }} ">
-                     <a href="{{url('formbuilder')}}">
+                  </li>
+                  <li class="{{ Request::is('forms/*') ? 'active' : '' }} ">
+                     <a href="{{url('forms')}}">
                         <em class="fa fa-foursquare"></em>
-                        <span data-localize="sidebar.nav.Tasks">FormBuilder</span>
+                        <span data-localize="sidebar.nav.Tasks">Forms</span>
                      </a>
-                  </li>-->
+                  </li>
                    <li class=" {{ Request::is('users') ? 'active' : '' }}">
                      <a href="{{route('users.index')}}">
                         <em class="icon-people"></em>
                         <span data-localize="sidebar.nav.USERS">Users</span>
                      </a>
-                  </li>
-                  <li class="nav-heading ">
-                     <span data-localize="sidebar.heading.HEADER">Project Content Navigation</span>
-                  </li>
-                  <li class="nav-heading ">
-                     <span data-localize="sidebar.heading.HEADER">Content Navigation</span>
-                  </li><!--
-                  <li class=" ">
-                     <a href="{{route('projectcontent.index')}}">
-                        <em class="icon-puzzle"></em>
-                        <span data-localize="sidebar.nav.PROJECTSContent">Table Of Content</span>
-                     </a>
-                  </li>-->
-                  <li class=" ">
-                     <a href="#tables" title="Tables" data-toggle="collapse">
-                        <em class="icon-grid"></em>
-                        <span data-localize="sidebar.nav.table.TABLE">Community Chest</span>
-                     </a>
-                     <ul id="tables" class="nav sidebar-subnav collapse">
-                        <li class="sidebar-subnav-header">Tables</li>
-
-                        <li class=" ">
-                           <a href="#" title="jqGrid">
-                              <span>Home</span>
-                           </a>
-                        </li>
-                        <li class=" ">
-                           <a href="{{route('ngos.index')}}" title="Standard">
-                              <span data-localize="sidebar.nav.table.STANDARD">NGO</span>
-                           </a>
-                        </li>
-                        <li class=" ">
-                           <a href="{{route('sponsors.index')}}" title="Extended">
-                              <span data-localize="sidebar.nav.table.EXTENDED">Sponsor</span>
-                           </a>
-                        </li>
-                        <li class=" ">
-                           <a href="#" title="DataTables">
-                              <span data-localize="sidebar.nav.table.DATATABLE">Favority</span>
-                           </a>
-                        </li>
-                     </ul>
                   </li>
                   <li class="sidebar-subnav-header">
                      <a href="{{route('logout')}}" title="Logout">

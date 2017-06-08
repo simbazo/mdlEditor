@@ -14,12 +14,12 @@ class CreateProductQuestionsTable extends Migration
     public function up()
     {
         Schema::create('product_questions',function(Blueprint $table){
-            $table->integer('product_id');
-            $table->integer('question_id');
+            $table->integer('product_id')->unsigned();
+            $table->integer('question_id')->unsigned();
 
-            /*
+            
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('question_id')->references('uuid')->on('questions')->onUpdate('cascade')->onDelete('cascade');*/
+            $table->foreign('question_id')->references('uuid')->on('questions')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -36,7 +36,10 @@
     <link rel="stylesheet" href="{{asset("assets/css/pace.css")}}"> 
     <link href="{{asset('assets/css/bootstrap-editable.css')}}" rel="stylesheet"/>
    <!-- =============== APP STYLES ===============-->
-   <!--<link rel="stylesheet" href="http://demo.expertphp.in/css/jquery.treeview.css" />-->
+   
+    <!-- date timepicker -->
+    <link rel="stylesheet" href="{{asset('assets/date_timepicker/css/bootstrap-datetimepicker.min.css')}}"/>
+    <link href="{{ asset('assets/plugins/pikaday/pikaday.css') }}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{{asset('assets/treegrid/css/jquery.treegrid.css')}}">
    <link rel="stylesheet" href="{{asset('assets/css/app.css')}}" id="maincss">
     <link rel="stylesheet" href="{{asset('assets/css/tree.css')}}" id="maincss">

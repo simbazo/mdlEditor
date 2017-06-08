@@ -338,5 +338,8 @@ return array (
   'new_question'  =>'New Question',
   'question'      =>'Question',
   'question_type' =>'Question Type',
-  'edit_questions'=>'Edit Question'
+  'edit_questions'=>'Edit Question',
+  'date_of_birth' =>'Date of Birth',
+  'id_number'     =>'ID Number',
+  'gender'        =>'Gender'
 );

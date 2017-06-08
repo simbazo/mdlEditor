@@ -27,9 +27,13 @@
    <script src="{{asset('assets/vendor/jquery-localize-i18n/dist/jquery.localize.js')}}"></script>-->
    <!-- RTL demo-->
    <script src="{{asset('assets/js/demo/demo-rtl.js')}}"></script>
-  <script src="{{ asset('assets/vendor/pikaday/moment.js') }}"></script>
-  <script src="{{ asset('assets/vendor/pikaday/pikaday.js') }}"></script>
-  <script src="{{ asset('assets/vendor/pikaday/pikaday.jquery.js') }}"></script>
+
+<!-- datepicker.js javascript-->
+<script src="{{ asset('assets/plugins/pikaday/moment.js') }}"></script>
+<script src="{{asset('assets/date_timepicker/js/bootstrap-datetimepicker.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/pikaday/pikaday.js') }}"></script>
+<script src="{{ asset('assets/plugins/pikaday/pikaday.jquery.js') }}"></script>
+
    <script src="{{asset('assets/vendor/datatables/media/js/jquery.dataTables.min.js')}}"></script>
    <script src="{{asset('assets/vendor/datatables-colvis/js/dataTables.colVis.js')}}"></script>
    <script src="{{asset('assets/vendor/datatables/media/js/dataTables.bootstrap.js')}}"></script>

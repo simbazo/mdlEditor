@@ -14,7 +14,17 @@ class CreateSponsorsTable extends Migration
     public function up()
     {
         Schema::create('sponsors', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('uuid');
+            $table->integer('sponsor_type_id')->nullable();
+            $table->string('sponsor_name')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->integer('country_id');
+            $table->string('province')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address_line1')->nullable();
+            $table->string('address_line2')->nullable();
+            $table->string('postal_code');
             $table->timestamps();
         });
     }
