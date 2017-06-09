@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover dataTable datatable dtr-inline collapsed searchtable">
+<table class="table table-striped table-hover dtr-inline collapsed searchtable">
     <thead>
         <tr>
             <th>{{trans('application.name')}} </th>

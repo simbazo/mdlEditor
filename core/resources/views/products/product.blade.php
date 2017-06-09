@@ -1,15 +1,11 @@
 <div class="col-md-6">
-   <table class="table table-striped table-hover dataTable datatable dtr-inline collapsed searchtable" id="clickable">
+   <table class="table table-striped table-hover dtr-inline collapsed searchtable" id="clickable">
       <thead> 
          <tr> 
             <th>{{trans('application.name')}} </th>
            <!-- <th> </th>-->
             <th >
-               <h3 class="box-title pull-right">
-                  <div class="box-tools">
-                    <a href="{{ route('products.create') }}" class="btn btn-primary btn-xs pull-right" data-toggle="ajax-modal"> <i class="fa fa-puzzle"></i> {{trans('application.new_product')}}</a>
-                 </div>
-              </h3>
+            <a href="{{ route('products.create') }}" class="btn btn-primary btn-xs pull-right" data-toggle="ajax-modal"> <i class="fa fa-puzzle"></i> {{trans('application.new_product')}}</a>
            </th>
         </tr>
      </thead>
@@ -27,7 +23,7 @@
    </tbody>      
 </table>
 </div>
-<div class="col-md-6" id="contentpreview">
+<div class="col-md-6" id="contentpreview" style="border-left: 1px solid #ccc;">
    
 </div>
 
