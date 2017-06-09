@@ -30,7 +30,7 @@
     <link href="{{asset("assets/formbuilder/css/custom.css")}}" rel="stylesheet">
    <link href="{{asset('assets/css/jquery-ui.css')}}" rel="stylesheet">
    
-   <link rel="stylesheet" href="{{asset('assets/css/theme-c.css')}}" id="maincss">
+   <link rel="stylesheet" href="{{asset('assets/css/theme-a.css')}}" id="maincss">
     <link href="{{ asset('assets/vendor/chosen_v1.2.0/chosen.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/vendor/sweetalert/dist/sweetalert.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{asset("assets/css/pace.css")}}"> 
@@ -48,7 +48,7 @@
 <body class="layout-fixed offsidebar-open" data-gr-c-s-loaded="true">
    <div class="wrapper"> 
       <!-- top navbar-->
-     <!--@/include('templates.partials._header')-->
+     @include('templates.partials._header')
       <!-- sidebar-->
       @include('templates.partials._sidebar')
       <!-- offsidebar-->
