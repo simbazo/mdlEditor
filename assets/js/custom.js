@@ -12,7 +12,7 @@ function format ( d ) {
     $('#DataTables_Table_0_wrapper').removeClass('spinner2');
 });  
 });    
-}
+} 
 
 $(document).ready(function () {
     $('form').validator();
