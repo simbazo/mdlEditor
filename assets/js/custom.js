@@ -65,7 +65,7 @@ $(document).ready(function () {
                 cell.innerHTML = i+1;
             } );
         } ).draw();*/
-
+//All Okay
     //$('.datepicker').datepicker({format:'yyyy-mm-dd', autoclose:true});
     $('.datepicker').pikaday({ firstDay: 1, format:'YYYY-MM-DD', autoclose:true });
     $(document).ajaxStart(function() { Pace.restart(); });

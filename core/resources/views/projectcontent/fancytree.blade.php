@@ -59,7 +59,7 @@
   @push('ccs')
 <link rel="stylesheet" href="{{asset('assets/ckeditor/css/samples.css')}}">
 <link rel="stylesheet" href="{{asset('assets/ckeditor/toolbarconfigurator/lib/codemirror/neo.css')}}">
-
+ {{-- All okay --}}
 @endpush
 
 @push('js')
