@@ -9,8 +9,8 @@ function message(){
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <strong>Message: </strong>'.Session::get('flash_notification.message').'</div>';
     return $msghtml;
-}
-
+} 
+/*Check Bugs*/
 function form_errors($errors){
     $error_list = '';
     foreach($errors->all() as $error){

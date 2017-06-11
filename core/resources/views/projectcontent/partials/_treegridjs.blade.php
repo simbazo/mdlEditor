@@ -34,7 +34,7 @@
                 expanderExpandedClass: 'icon-minus',
                 expanderCollapsedClass: 'icon-plus',
             });
-        });
+        }); /**/
             function f1() {
               var m = 1, line = '';
                 for (i = 1; i < 3; i++) {

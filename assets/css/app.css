@@ -196,7 +196,7 @@ hr {
 .nav-tabs > li.active > a:focus {
   color: inherit;
   border-bottom-color: #fff;
-  background-color: #ee3d3d !important;
+  background-color: #85b0fd !important;
 }
 
 .tab-content {
@@ -8375,9 +8375,10 @@ tr.shown td.details-control {
 /*End Tabs*/
 
 /*Treetable*/
+/*
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
    padding: 1px !important;
-}
+}*/
 
 .nav-tabs {
     border-bottom: 0px;

@@ -1,4 +1,4 @@
-<div class="panel panel-warning">
+<div class="" style="border: 0px">
   <div class="col-md-12">
    <div class="panel-heading ">
      <div class="col-md-6">
@@ -36,7 +36,7 @@
       <br><br>
       <div class="list-group" id="sortable">
         @foreach($product->questions as $question)
-        <li class="list-group-item">{{$question->name}} <!--<a href="{{ route('farmer.farm',$question->uuid) }}" class="btn btn-danger btn-xs btn-delete pull-right" data-toggle="ajax-modal"> <i class="fa fa-trash"></i></a>--></li>
+        <li class="list-group-item">{{$question->name}} <a href="{{ route('farmer.farm',$question->uuid) }}" class="btn btn-danger btn-xs btn-delete pull-right" data-toggle="deletequestion"> <i class="fa fa-trash"></i></a> <input type="hidden" value="{{$question->uuid}}" class="deletequestion"></li>
         @endforeach
       </div>
     </div>
@@ -74,6 +74,10 @@
           $('#productsubmit').html('save');
         })
   });
+  $(document).on('click','[data-toggle="deletequestion"]', function(e){
+    e.preventDefault();
+    console.log('i was clicked');
+  })
   $( function() {
     $( "#sortable" ).sortable();
     $( "#sortable" ).disableSelection();
