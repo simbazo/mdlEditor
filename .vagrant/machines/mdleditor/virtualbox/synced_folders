@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/code/mdleditor/core":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/code/mdleditor/core","hostpath":"E:/Apache24/htdocs/homestead/laravel/mdl/mdlEditor/core","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"E:/Apache24/htdocs/homestead/laravel/mdl/mdlEditor","disabled":false,"__vagrantfile":true}}}

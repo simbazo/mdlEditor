@@ -63,12 +63,17 @@ Route::group(['middleware'=>'auth'],function(){
 			'races'		=>'RaceController',
 			'sponsors'	=>'SponsorsController',
 			'gender'	=>'GenderController'	
-		]);
-	Route::get('farmer/farm/{id}','FarmersController@farm')->name('farmer.farm');
-	Route::post('farmer/farm/{id}','FarmersController@addFarms');
+		]);        
+        
+        Route::get('farmer/farm/{id}','FarmersController@farm')->name('farmer.farm');
+        Route::post('farmer/farm/{id}','FarmersController@addFarms');
 	});
 
 	Route::group(['prefix'=>'settings'],function(){
 		Route::resource('producttypes','Editor\ProductTypesController');
+	});
+    
+    Route::group(['prefix'=>'dforms'],function(){
+		Route::resource('clients','Forms\FormsController@clientforms');
 	});
 });
