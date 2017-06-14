@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Editor;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\QuestionsFormRequest;
 use App\Editor\Repositories\Contracts\QuestionInterface as Question;
 use App\Editor\Repositories\Contracts\ProductListInterface as Lists;
 class QuestionsController extends Controller
@@ -42,14 +43,14 @@ class QuestionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuestionsFormRequest $request)
     {
         $data = $request->all();
 
         $data['user_created'] = auth()->user()->uuid;
 
         $question = $this->question->create($data);
-
+ 
          if($question){
             flash()->success(trans('application.record_created'));
             return response()->json(['product'=>$question],201);
@@ -90,7 +91,7 @@ class QuestionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(QuestionsFormRequest $request, $id)
     {
         $data = $request->all();
         $data['user_updated'] = auth()->user()->uui;

@@ -11,7 +11,7 @@ use App\Editor\Repositories\Contracts\ProjectInterface as Project;
 use App\Editor\Repositories\Contracts\ProjectContentInterface as PContent;
 use App\Editor\Repositories\Contracts\FileInterface as File;
 class ProjectsContentController extends Controller
-{
+{ 
     protected $pcontent,$project,$content, $file;
 
     public function __construct(PContent $pcontent,Project $project,Content $content, File $file){

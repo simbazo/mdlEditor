@@ -171,7 +171,6 @@ $(document).ready(function () {
                                 {
                                     return;
                                 }
-                                console.log('all okay');
                             }).fail(function(jqXhr, json, errorThrown){
                                 var errors = jqXhr.responseJSON;
                                 var errorStr = '';
@@ -231,7 +230,6 @@ $(document).ready(function () {
                                 {
                                     return;
                                 }
-                                console.log('all okay');
                             }).fail(function(jqXhr, json, errorThrown){
                                 var errors = jqXhr.responseJSON;
                                 var errorStr = '';
@@ -329,7 +327,7 @@ $('#clickable').on('click', '.clickable-row', function(event) {
     window.location.href = this.value;
 });
  $(document).on('blur','.alert',function(){
-    alert('all okay');
+   
 });
  $(document).on('click', '#btn_add_row', function() {
     cloneRow('item_table');

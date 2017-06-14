@@ -328,6 +328,7 @@ return array (
   'task_title'    =>'Task Title',
   'assigned_users'=>'Users Assigned',
   'task_owner'    =>'Task Owner',
+  'owner'         => 'Owner',
   'content_start' =>'Content Start',
   'parent_node'   =>'Parent Node',
   'new_node'      =>'New Node',

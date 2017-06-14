@@ -27,8 +27,8 @@
                             <th class="tr-previewd list-iconclass"><!--<p class="non pen">{{trans('Sibling')}}</p>--></th>
                             <th class="list-nameclass" style="width: 30%">{{trans('application.name')}} </th>
                             <th class="tr-previewd list-iconclass" style="width: 13%"><!--<p class="non pen">Child</p>--></th>
-                            <th class="tr-previewd list-iconclass">{{trans('Act')}}</th>
-                            <th class="tr-previewd list-iconclass">{{trans('PDF')}}</th>
+                            <th class="tr-previewd list-iconclass" style="width: 12%">{{trans('Act')}}</th>
+                            <th class="tr-previewd list-iconclass" style="width: 13%">{{trans('PDF')}}</th>
                             <th class="tr-previewd " style="width: 30%">{{trans('application.updated_at')}}</th>
                         </tr>
                         </thead>

@@ -15,6 +15,7 @@ Route::group(['prefix'=>'auth'],function(){
 	Route::post('login','Auth\AuthController@postLogin');
 	Route::get('logout','Auth\AuthController@logout')->name('logout');
 });
+Route::get('dfomrm','dformController@index')->name('dfomrm');
 
 Route::group(['middleware'=>'auth'],function(){
 	Route::get('/', 'HomeController@index')->name('dashboard');

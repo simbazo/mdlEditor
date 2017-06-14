@@ -7,7 +7,7 @@
     <div class="modal-dialog" style="width: 70%">
     <div class="modal-content">
         <div class="modal-header">
-            <button type="button" class="close btn-danger" data-dismiss="modal" aria-hidden="">&times;</button>
+            <button type="button" class="close btn-danger" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h5 class="modal-title">{{trans('PROJECT LIST')}}</h5>
              
 
@@ -20,7 +20,7 @@
                         <thead>
                         <tr>
                             <th>{{trans('application.project_name')}} </th>
-                            <th>{{trans('application.user_status')}} </th>
+                            <th>{{trans('application.owner')}} </th>
                             <th>{{trans('application.action')}} </th>
                         </tr>
                         </thead>

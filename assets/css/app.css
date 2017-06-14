@@ -8199,7 +8199,7 @@ fieldset legend {
      top: 0; left: 0; top: 0; bottom: 0;
 }
 
-[aria-hidden="true"] {    
+[aria-hidden=""] {    
     transition: opacity 1s, z-index 0s 1s;
     width: 100vw;
     z-index: -1; 

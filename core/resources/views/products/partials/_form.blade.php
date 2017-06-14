@@ -1,6 +1,6 @@
 
 <div class="form-group">
-    {!! Form::label('name', trans('application.task_title')) !!}
+    {!! Form::label('name', trans('application.name')) !!}
     {!! Form::text('product_name', null, ['class' => 'form-control input-sm', 'required']) !!}
 </div>
 <div class="form-group">

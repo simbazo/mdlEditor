@@ -112,19 +112,26 @@ class ProductsController extends Controller
     }
     public function questions(Request $request){
         $product = $this->product->getById($request->get('product_id'));
-        $product->questions()->syncWithoutDetaching([$request->get('question_id')]); 
-        if($product){
+
+        $exists = $product->questions()->where('product_id', $request->get('product_id'))->where('question_id',$request->get('question_id'))->exists();
+ 
+        if($exists){
+             return response()->json(['success'=>false],201);
+        }else{
+            $product->questions()->syncWithoutDetaching([$request->get('question_id')]);
+            if($product){
             return $this->preview($product->id);
         }
+        } 
         return response()->json('something went wrong');
     }
     public function questionsdetach(Request $request){
         $product = $this->product->getById($request->get('product_id'));
-        $product->questions()->syncWithoutDetaching([$request->get('question_id')]); 
+        $product->questions()->detach([$request->get('question_id')]); 
         if($product){
-            return $this->preview($product->id);
+           return response()->json(['success'=>true],201);
         }
-        return response()->json('something went wrong');
+        return response()->json(['success'=>false],503);
     }
 
     public function preview($id){
