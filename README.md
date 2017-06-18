@@ -1,8 +1,10 @@
-<<<<<<< HEAD
-# editor2
-New editor for appenberg
+# mdlEditor Repository
 
-Hi ALl.
+This repository contains the newest editor for MiDigitalLife. The purpose of the editor is to:
+* Create and maintain knowledge content that is consumed by the various miDigitalLife services.
+* Create and maintain client products (usually in the form of web forms) used for the purpose of collecting data.
+* Upload client files in the form of PDFs, images and other media files
+
 
 The Editor Project is structured as Follow.
 
@@ -36,6 +38,3 @@ phpunit.xml
 Happy Coding and Reviews. Dont forget to drop me any email or whatsapp in case having trouble
 
 Jacinto Joao (JJ)
-=======
-# mdlEditor
->>>>>>> 1ea410e3d58a159ea861daaa72325e1ba79baf5b
