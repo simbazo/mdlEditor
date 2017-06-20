@@ -55,6 +55,7 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::group(['prefix'=>'forms','namespace'=>'Forms'], function(){
 		Route::resources([
 			'/'			=>'FormsController',
+            'dform'	=>'DFormsController',
 			'farmers'	=>'FarmersController',
 			'farms'		=>'FarmsController',
 			'farmtype'	=>'FarmTypesController',
