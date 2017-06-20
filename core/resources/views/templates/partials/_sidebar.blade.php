@@ -49,13 +49,13 @@
                         <span data-localize="sidebar.nav.Tasks">Navigator</span>
                      </a>
                   </li>
-                @endif
+                @endif<!--
                   <li class="{{ Request::is('tasks') ? 'active' : '' }} ">
                      <a href="{{route('tasks.index')}}">
                         <em class="icon-list"></em>
                         <span data-localize="sidebar.nav.Tasks">Tasks</span>
                      </a>
-                  </li>
+                  </li>-->
                    <li class="{{ Request::is('products') ? 'active' : '' }} ">
                      <a href="{{route('products.index')}}">
                         <em class="icon-puzzle"></em>

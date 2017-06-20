@@ -12,7 +12,7 @@
         </th>
     </tr>
 </thead>
-<tbody class="list-group">
+<tbody class="fbody">
     @foreach($lists as $product)
     <tr>
         <td>{{ $product->name}}</td>

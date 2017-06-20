@@ -36,7 +36,7 @@ function edit_btn($route, $id){
     return $btn;
 }
 function node_btn($route, $id){
-    $btn = '<a class="btn btn-primary btn-xs append-tdd btn-editable" style="display:none;" data-toggle="ajax-node" data-rel="tooltip" data-placement="top" href="'.route($route, $id).'" title="'.trans("Add Child Node").'"><i class="fa fa-plus"></i></a>';
+    $btn = '<a class="btn btn-default btn-xs append-tdd btn-editable" style="display:none;" data-toggle="ajax-node" data-rel="tooltip" data-placement="top" href="'.route($route, $id).'" title="'.trans("add Heading/ Category").'"><i class="fa fa-plus"></i></a>';
     return $btn;
 }
 function node1_btn($route, $id){
@@ -54,7 +54,7 @@ function editj_btn($route, $id){
     return $btn;
 }
 function preview_btn($route, $id){
-    $btn = '<a class="btn btn-warning btn-xs non preview preview-enable"  data-toggle="ajax-preview" data-rel="tooltip" data-placement="top" href="'.route($route, $id).'" title="'.trans("Preview").'"><i class="fa fa-eye-slash"></i></a>';
+    $btn = '<a class="btn btn-default btn-xs non preview preview-enable"  data-toggle="ajax-preview" data-rel="tooltip" data-placement="top" href="'.route($route, $id).'" title="'.trans("Preview").'"><i class="fa fa-eye"></i></a>';
     return $btn;
 }
 function productpreview_btn($route, $id){

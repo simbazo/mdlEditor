@@ -8,7 +8,7 @@
             <div class="panel-heading content-header">
               <div class="row">
                 <div class="col-md-6">
-                <button class="mb-sm btn-lg btn btn-success btn-outline" id="edit-content">Organise List</button>
+                <button class="mb-sm btn-lg btn btn-success btn-outline" id="edit-content">Edit List</button>
                 </div>
                 <div class="col-md-6">
                 <button type="button" class="mb-sm btn-lg btn btn-success btn-outline" id="preview-mode">Enable Preview</button>
@@ -21,7 +21,7 @@
             <div class="panel-body">
             <div class="col-md-12 table-responsive table01" id="preview-separate">
             <table class="table  tree-2  table-fixed searchtable" id="yourTable">
-            <thead>
+            <thead> 
                         <tr>
                             <th style="width: 2%"></th>
                             <th class="tr-previewd list-iconclass"><!--<p class="non pen">{{trans('Sibling')}}</p>--></th>
@@ -32,7 +32,7 @@
                             <th class="tr-previewd " style="width: 30%">{{trans('application.updated_at')}}</th>
                         </tr>
                         </thead>
-                        <tbody id="fbody">
+                        <tbody class="fbody">
                           
                 
                         </tbody>       

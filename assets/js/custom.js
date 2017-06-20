@@ -146,7 +146,7 @@ $(document).ready(function () {
         $('#ajax-content').show();
         $('#content').addClass('spinner');
         var url = $(this).attr('href');
-
+ 
         if (url.indexOf('#') === 0) {
         } else {
             $.get(url, function(data) {
@@ -431,17 +431,18 @@ $(document).ready(function(){
 $('#yourTable').on('click', '[data-toggle="ajax-node"]', function(e) {
     e.preventDefault();
     $(this).closest('tr').addClass('danger');
+    var placeholder = $(this).closest('tr').children('td.parentNode').text();
     var $parent_node_id = $(this).closest('tr').find('input.node-uuid').val();
-    console.log($parent_node_id);
     var $curRow = $(this).closest('tr');
     var $newRow = '<tr class="">'
-    + '<form id="nodeListForm"><td></><td></td><td><input type="hidden" id="node-uuid" name="Parent_ID"><input type="text" required class="form-control input-sm" name="name" placeholder="child name"/></td>'
+    + '<form id="nodeListForm"><td></><td></td><td><input type="hidden" id="node-uuid" name="Parent_ID"><input type="text" required class="form-control input-sm headingc" name="name" placeholder="heading name"/></td>'
     +'<td><input type="text" class="form-control input-sm" required name="description" placeholder="short description"/></td>'
     +'<td class="td-loader"></td>'
     +'<td><button type="sbmit" class="btn btn-primary btn-xs btn-node-submit" onclick ="create_node($(this))"><i class="fa fa-check"></i></button>'
     +' <button class="btn btn-danger btn-xs cancel" onclick ="delete_tr($(this))"><i class="fa fa-remove"></i></button></td>'
     +'</form></tr>';
     $curRow.after($newRow);
+    $('#yourTable').find('tr input.headingc').attr("placeholder","New "+ placeholder).blur();
     $('#yourTable').find('tr input#node-uuid').val($parent_node_id);
 });
 function delete_tr(row)
@@ -565,9 +566,9 @@ $('#myTab a[href="' + hash + '"]').tab('show');
 
 $("#searchInput").keyup(function () {
     //split the current value of searchInput
-    var data = this.value.split(" ");
+    var data = this.value.toUpperCase().split(" ");
     //create a jquery object of the rows
-    var jo = $("#fbody").find("tr");
+    var jo = $(".fbody").find("tr");
     if (this.value == "") {
         jo.show();
         return;
@@ -579,7 +580,7 @@ $("#searchInput").keyup(function () {
     jo.filter(function (i, v) {
         var $t = $(this);
         for (var d = 0; d < data.length; ++d) {
-            if ($t.is(":contains('" + data[d] + "')")) {
+            if ($t.text().toUpperCase().indexOf(data[d]) > -1) {
                 return true;
             }
         }
@@ -594,5 +595,5 @@ $("#searchInput").keyup(function () {
     });
     $(this).unbind('focus');
 }).css({
-    "color": "blue"
+    "color": "#C0C0C0"
 });

@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <th>{{trans('application.name')}} </th>
-            <th>{{trans('application.question_type')}} </th>
+            <!--<th>{{trans('application.question_type')}} </th>-->
             <th>{{trans('application.description')}} </th>
             <th >
              <h3 class="box-title pull-right">
@@ -13,11 +13,11 @@
         </th>
     </tr>
 </thead>
-<tbody class="list-group">
+<tbody class="fbody">
     @foreach($questions as $question)
     <tr>
         <td>{{ $question->name}}</td>
-        <td>{{ $question->type->name}}</td>
+       <!-- <td>{{ $question->type->name}}</td>-->
 
         <td>{{ $question->description}}</td>
         <td style="text-align: right;">
