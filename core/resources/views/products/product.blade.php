@@ -9,7 +9,7 @@
            </th>
         </tr>
      </thead>
-     <tbody class="list-group">
+     <tbody class="fbody">
       @foreach($products as $product)
       <tr data-href="{{route('productspreview',$product->id)}}" data-toggle="ajax-preview-list" class="clickable-row">
          <td><a href="{{route('productspreview',$product->id)}}" data-toggle="ajax-preview-list">{{ $product->product_name}}</a></td>

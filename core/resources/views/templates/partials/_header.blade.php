@@ -27,21 +27,6 @@
                         <em class="fa fa-navicon"></em>
                      </a>
                   </li>
-                  <!-- START User avatar toggle-->
-                  <li>
-                     <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-                     <a id="user-block-toggle" href="#user-block" data-toggle="collapse">
-                        <em class="icon-user"></em>
-                     </a>
-                  </li>
-                  <!-- END User avatar toggle-->
-                  <!-- START lock screen-->
-                  <li>
-                     <a href="lock.html" title="Lock screen">
-                        <em class="icon-lock"></em>
-                     </a>
-                  </li>
-                  <!-- END lock screen-->
                </ul>
                <!-- END Left navbar-->
                <!-- START Right Navbar-->

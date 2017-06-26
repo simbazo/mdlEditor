@@ -18,7 +18,7 @@
         <input type="hidden" name="product_id" value="{{$product->id}}" id="product_id">
         <div class="input-group">
 
-          {!! Form::select('question_id',array(), null, ['class' => 'form-control ajaxChosen input-sm noborder', !isset($payment->invoice_id) ? 'required' : '', 'data-placeholder' => 'Type atleast 2 characters of the question','id'=>'question_id']) !!}
+          {!! Form::select('question_id',array(), null, ['class' => 'form-control ajaxChosen input-sm noborder', !isset($payment->invoice_id) ? 'required' : '', 'data-placeholder' => 'Type at least 2 characters of the question','id'=>'question_id']) !!}
 
           <span class="input-group-btn">
 
