@@ -16,6 +16,10 @@
                   <a class="list-group-item" href="{{route('farms.index')}}">Farm Form</a>
                   <a class="list-group-item" href="{{route('ngos.index')}}">NGOS Form</a>
                   <a class="list-group-item" href="{{route('sponsors.index')}}">Sponsor Form</a>
+                  <a class="list-group-item" href="#">-----</a>
+                  @foreach($products as $product)
+                    <a class="list-group-item" href="{{route('dforms.show', $product->id)}}">{{$product->product_name}} Form</a>
+                  @endforeach
                </ul>
             </div>
          </div>
