@@ -8,10 +8,16 @@ use App\Models\Product;
 
 class FormsController extends Controller
 {
+    protected $product;
+    
+    public function __construct(Product $product){
+        $this->product = $product;
+    }
+    
     public function index(){
     	//return view('forms.index');
-        $products = Product::all();        
-    	return view('forms.index',compact('products'));
+        $products = $this->product->all();
+        return view('forms.index', compact('products'));
     }
     
     public function clientForms(){
