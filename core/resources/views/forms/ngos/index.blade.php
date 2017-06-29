@@ -37,6 +37,7 @@
                         <td>{{$ngo->city}}</td>
                         <td>{{$ngo->address_line1}}</td>
                         <td>
+                           {!!show_btn('ngos.show',$ngo->uuid)!!}
                            {!!edit_btn('ngos.edit',$ngo->uuid)!!}
                            {!!delete_btn('ngos.destroy',$ngo->uuid)!!}
                         </td>

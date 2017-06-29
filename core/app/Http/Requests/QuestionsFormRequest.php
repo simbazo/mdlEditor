@@ -24,7 +24,6 @@ class QuestionsFormRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'list_id'   =>'required',
             'name'      =>'required|unique:questions,name',
             'description'=>'required'
         ];

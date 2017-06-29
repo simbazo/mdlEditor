@@ -85,6 +85,7 @@
    <script src="{{asset('assets/js/app.js')}}"></script>
    <script src="{{asset('assets/js/custom.js')}}"></script>
    <script src="{{asset('assets/js/treejs.js')}}"></script>
+   @stack('jsupload')
 
 <script type="text/javascript">
    var $contentpreview = $('#contentpreview');

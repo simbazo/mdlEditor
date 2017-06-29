@@ -83,7 +83,9 @@ class FarmsController extends Controller
      */
     public function show($id)
     {
-        //
+        $farm = $this->farm->findOrFail($id);
+
+        return view('forms.farm.show',compact('farm'));
     }
 
     /**
@@ -121,6 +123,28 @@ class FarmsController extends Controller
             return response()->json(['success'=>false,'msg'=>trans('application.record_creation_failed')],503);
     }
 
+
+    public function uploadLogo(Request $request){
+
+        $farm = $this->farm->findOrFail($request->get('farm_id'));
+
+        if ($request->hasFile('logo'))
+        {
+            $file = $request->file('logo');
+            $filename = strtolower(str_random(50) . '.' . $file->getClientOriginalExtension());
+            $file->move('assets/img/uploads/farms/', $filename);
+            \Image::make(sprintf('assets/img/uploads/farms/%s', $filename))->resize(200, 200)->save();
+            \File::delete('assets/img/uploads/farms/'.$farm->logo);
+            $data['logo']= $filename;
+            $farm->fill($data)->save();
+            flash()->success('Logo updated');
+            return redirect()->route('farms.show',$farm->uuid);
+        }
+
+        flash()->error('Opss. Logo not uploaded, please try again');
+        return redirect()->route('farms.show',$farm->uuid);
+
+    }
     /**
      * Remove the specified resource from storage.
      *

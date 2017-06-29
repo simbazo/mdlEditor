@@ -2,21 +2,15 @@
 
 @section('content')
 
-<div class="col-md-12 content-header" >
-
-    <h1><i class="fa fa-file"></i> {{trans('application.edit_profile')}}</h1>
-
-</div>
-
-<section class="content">
+<section class="col-md-12">
 
     <div class="row">
 
         <div class="col-md-12">
 
-        <div class="box box-primary">
+        <div class="panel panel-primary">
 
-            <div class="box-body">
+            <div class="panel-body">
 
         {!! Form::open(['url' => ['profile'], 'files'=>true]) !!}
 

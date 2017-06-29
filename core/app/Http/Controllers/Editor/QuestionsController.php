@@ -121,7 +121,7 @@ class QuestionsController extends Controller
         $questions = $this->question->deleteById($id);
 
         if($questions)
-        flash()->success('application.record_deleted');
+        flash()->success(trans('application.record_deleted'));
     else
         flash()->error(trans('application.record_failed'));
 

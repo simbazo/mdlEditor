@@ -10,7 +10,7 @@ use App\Editor\Repositories\Contracts\UserInterface as User;
 /**
 * @author  [Jacinto Joao] <[<email address>]>
 */
-class AuthController extends Controller
+class ApiAuthController extends Controller
 {
 	
 	protected $user;

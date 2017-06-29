@@ -35,6 +35,7 @@
                         <td>{{$farm->city}}</td>
                         <td>{{$farm->address_line1}}</td>
                         <td>
+                           {!!show_btn('farms.show',$farm->uuid)!!}
                            {!!edit_btn('farms.edit',$farm->uuid)!!}
                            {!!delete_btn('farms.destroy',$farm->uuid)!!}
 

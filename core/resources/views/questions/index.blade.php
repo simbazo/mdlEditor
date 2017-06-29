@@ -17,7 +17,7 @@
     @foreach($questions as $question)
     <tr>
         <td>{{ $question->name}}</td>
-       <!-- <td>{{ $question->type->name}}</td>-->
+       <!-- <td>{{ $question->type->name or ''}}</td>-->
 
         <td>{{ $question->description}}</td>
         <td style="text-align: right;">

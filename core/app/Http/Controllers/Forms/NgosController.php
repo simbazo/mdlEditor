@@ -71,7 +71,9 @@ class NgosController extends Controller
      */
     public function show($id)
     {
-        //
+        $ngo = $this->ngo->findOrFail($id);
+
+        return view('forms.ngos.show',compact('ngo'));
     }
 
     /**
@@ -108,6 +110,28 @@ class NgosController extends Controller
             return response()->json(['data'=>$ngo,'success'=>true,'msg'=>trans('application.record_created')],201);
         else
             return response()->json(['success'=>false,'msg'=>trans('application.record_creation_failed')],503);
+    }
+
+    public function uploadLogo(Request $request){
+
+        $ngo = $this->ngo->findOrFail($request->get('ngo_id'));
+
+        if ($request->hasFile('logo'))
+        {
+            $file = $request->file('logo');
+            $filename = strtolower(str_random(50) . '.' . $file->getClientOriginalExtension());
+            $file->move('assets/img/uploads/ngos/', $filename);
+            \Image::make(sprintf('assets/img/uploads/ngos/%s', $filename))->resize(200, 200)->save();
+            \File::delete('assets/img/uploads/ngos/'.$ngo->logo);
+            $data['logo']= $filename;
+            $ngo->fill($data)->save();
+            flash()->success('Logo updated');
+            return redirect()->route('ngos.show',$ngo->uuid);
+        }
+
+        flash()->error('Opss. Logo not uploaded, please try again');
+        return redirect()->route('ngos.show',$ngo->uuid);
+
     }
 
     /**

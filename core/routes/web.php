@@ -18,7 +18,8 @@ Route::group(['prefix'=>'auth'],function(){
 
 Route::group(['middleware'=>'auth'],function(){
 	Route::get('/', 'HomeController@index')->name('dashboard');
-	Route::post('/profile', 'Web\UsersController@profile')->name('profile');
+	Route::get('/profile', 'Web\ProfileController@edit')->name('profile');
+	Route::post('/profile', 'Web\ProfileController@update');
 	Route::post('/productquestion','Editor\ProductsController@questions')->name('productquestion');
 	
 	Route::post('/questionsdetach','Editor\ProductsController@questionsdetach')->name('questionsdetach');
@@ -50,7 +51,7 @@ Route::group(['middleware'=>'auth'],function(){
 		'questions'		=>'Editor\QuestionsController',
 		'files'			=>'Editor\FilesController',
 		'formbuilder'	=>'Editor\FormBuilderController'
-	]);
+		]);
 
 	Route::group(['prefix'=>'forms','namespace'=>'Forms'], function(){
 		Route::resources([
@@ -64,17 +65,19 @@ Route::group(['middleware'=>'auth'],function(){
 			'races'		=>'RaceController',
 			'sponsors'	=>'SponsorsController',
 			'gender'	=>'GenderController'	
-		]);        
-        
-        Route::get('farmer/farm/{id}','FarmersController@farm')->name('farmer.farm');
-        Route::post('farmer/farm/{id}','FarmersController@addFarms');
+			]);        
+		
+		Route::get('farmer/farm/{id}','FarmersController@farm')->name('farmer.farm');
+		Route::post('farmer/farm/{id}','FarmersController@addFarms');
+		Route::post('ngologo','NgosController@uploadLogo')->name('ngo.logo');
+		Route::post('farmlogo','FarmsController@uploadLogo')->name('farm.logo');
 	});
 
 	Route::group(['prefix'=>'settings'],function(){
 		Route::resource('producttypes','Editor\ProductTypesController');
 	});
-    
-    Route::group(['prefix'=>'dforms'],function(){
+	
+	Route::group(['prefix'=>'dforms'],function(){
 		Route::resource('clients','Forms\FormsController@clientforms');
 	});
 });

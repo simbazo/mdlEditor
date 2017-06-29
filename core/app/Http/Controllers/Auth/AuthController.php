@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller {
 
-    /*
+    /* 
     |--------------------------------------------------------------------------
     | Registration & Login Controller
     |--------------------------------------------------------------------------
