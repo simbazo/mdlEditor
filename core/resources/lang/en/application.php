@@ -342,5 +342,9 @@ return array (
   'edit_questions'=>'Edit Question',
   'date_of_birth' =>'Date of Birth',
   'id_number'     =>'ID Number',
-  'gender'        =>'Gender'
+  'gender'        =>'Gender',
+  'secret_question' => 'Secret Question',
+  'secret_answer' => 'Secret Answer',
+  'sex'           =>'Sex',
+  'dob'           =>'Date of Birth'
 );

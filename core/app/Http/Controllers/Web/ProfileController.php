@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileFormRequest;
 use App\Editor\Repositories\Contracts\UserInterface as Profile;
 use App\Http\Controllers\Controller;
+
 class ProfileController extends Controller
 {
    private $profile;
@@ -40,10 +41,15 @@ class ProfileController extends Controller
         {
             $user = $this->profile->getById(\Auth::user()->uuid);
             $data =  array(
-                      'username'      =>$request->username,
-                      'name'          =>$request->name,
-                      'email'         =>$request->email,
-                      'phone'         =>$request->phone
+                      'username'          =>$request->username,
+                      'first_name'        =>$request->first_name,
+                      'last_name'         =>$request->last_name,
+                      'dob'               =>$request->dob,
+                      'sex'               =>$request->sex,
+                      'email'             =>$request->email,
+                      'mobile'            =>$request->mobile,
+                      'secret_question'   =>$request->secret_question,
+                      'secret_answer'     =>$request->secret_answer,
             );
             if ($request->hasFile('avatar'))
             {

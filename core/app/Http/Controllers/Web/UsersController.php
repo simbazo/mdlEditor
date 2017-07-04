@@ -87,10 +87,16 @@ class UsersController extends Controller
      */
     public function update(Request $request, $uuid)
     {
-         $data = array('username' => $request->username,
-            'name' => $request->name,
+         $data = array(
+            'username' => $request->username,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'sex' => $request->sex,
+            'dob' => $request->dob,
             'email' => $request->email,
-            'phone' => $request->phone
+            'mobile' => $request->mobile,
+            'secret_question' => $request->secret_question,
+            'secret_answer' => $request->secret_answer
         );
         if($request->password != ''){
             $data['password'] = bcrypt($request->password);
@@ -107,11 +113,16 @@ class UsersController extends Controller
         {
             $user = $this->profile->getById(\Auth::user()->uuid);
             $data =  array(
-                      'username'=>$request->username,
-                      'name'=>$request->name,
-                      'email'=>$request->email,
-                      'phone'=> $request->phone,
-            );
+                      'username' => $request->username,
+                      'first_name' => $request->first_name,
+                      'last_name' => $request->last_name,
+                      'sex' => $request->sex,
+                      'dob' => $request->dob,
+                      'email' => $request->email,
+                      'mobile' => $request->mobile,
+                      'secret_question' => $request->secret_question,
+                      'secret_answer' => $request->secret_answer
+                    );
             if ($request->hasFile('avatar'))
             {
                 $file = $request->file('avatar');

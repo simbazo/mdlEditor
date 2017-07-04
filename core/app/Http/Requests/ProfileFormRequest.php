@@ -24,11 +24,16 @@ class ProfileFormRequest extends FormRequest
     public function rules()
     {
          return [
-            'username' => 'required|unique:users,username,'.\Auth::user()->uuid.',uuid',
-            'email'    => 'required|email|unique:users,email,'.\Auth::user()->uuid.',uuid',
-            'phone'    => 'required',
-            'name'     =>'required',
-            'avatar'    => 'image|image_size:<=300',
+            'username'              => 'required|unique:users,username,'.\Auth::user()->uuid.',uuid',
+            'email'                 => 'required|email|unique:users,email,'.\Auth::user()->uuid.',uuid',
+            'mobile'                 => 'required',
+            'first_name'            =>'required',
+            'last_name'             =>'required',
+            'secret_question'       =>'required',
+            'secret_answer'         =>'required',
+            'sex'                   =>'required',
+            'dob'                   =>'required',
+            'avatar'                => 'image|image_size:<=300'
         ];
     }
 }

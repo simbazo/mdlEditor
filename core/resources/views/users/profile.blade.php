@@ -32,9 +32,34 @@
 
                     <div class="form-group">
 
-                        {!! Form::label('name',  trans('application.name')) !!}
+                        {!! Form::label('first_name',  trans('application.first_name')) !!}
 
-                        {!! Form::text('name', $user->name, ['class' => 'form-control input-sm', 'required']) !!}
+                        {!! Form::text('first_name', $user->first_name, ['class' => 'form-control input-sm', 'required']) !!}
+
+                    </div>
+
+                    <div class="form-group">
+
+                        {!! Form::label('last_name',  trans('application.last_name')) !!}
+
+                        {!! Form::text('last_name', $user->last_name, ['class' => 'form-control input-sm', 'required']) !!}
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        {!! Form::label('dob',  trans('application.dob')) !!}
+
+                        {!! Form::text('dob', $user->dob, ['class' => 'form-control input-sm', 'required']) !!}
+
+                    </div>
+
+                    <div class="form-group">
+
+                        {!! Form::label('sex',  trans('application.sex')) !!}
+
+                        {!! Form::text('sex', $user->sex, ['class' => 'form-control input-sm', 'required']) !!}
 
                     </div>
 
@@ -48,9 +73,9 @@
 
                     <div class="form-group">
 
-                        {!! Form::label('phone',  trans('application.phone')) !!}
+                        {!! Form::label('mobile',  trans('application.mobile')) !!}
 
-                        {!! Form::text('phone', $user->phone, ['class' => 'form-control input-sm', 'required']) !!}
+                        {!! Form::text('mobile', $user->mobile, ['class' => 'form-control input-sm', 'required']) !!}
 
                     </div>
 
@@ -59,6 +84,22 @@
                         {!! Form::label('password',  trans('application.password').trans('application.password_leave_blank_notification')) !!}
 
                         {!! Form::password('password', ['class' => 'form-control input-sm']) !!}
+
+                    </div>
+
+                    <div class="form-group">
+
+                        {!! Form::label('secret_question',  trans('application.secret_question')) !!}
+
+                        {!! Form::text('secret_question', $user->secret_question, ['class' => 'form-control input-sm', 'required']) !!}
+
+                    </div>
+
+                    <div class="form-group">
+
+                        {!! Form::label('secret_answer',  trans('application.secret_answer')) !!}
+
+                        {!! Form::text('secret_answer', $user->secret_answer, ['class' => 'form-control input-sm', 'required']) !!}
 
                     </div>
 

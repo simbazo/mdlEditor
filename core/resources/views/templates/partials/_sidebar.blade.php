@@ -20,7 +20,7 @@
                      </div>
                      <!-- Name and Job-->
                      <div class="user-block-info">
-                        <a href="{{route('profile')}}"><span class="user-block-name">Hello, {{auth()->user()->name}}</span></a>
+                        <a href="{{route('profile')}}"><span class="user-block-name">Hello, {{auth()->user()->first_name}}</span></a>
                      </div>
                   </div>
                </div>
