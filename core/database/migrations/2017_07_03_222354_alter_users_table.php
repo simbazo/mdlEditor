@@ -16,7 +16,7 @@ class AlterUsersTable extends Migration
         //Columns to add
         Schema::table('users', function (Blueprint $table) {
             $table->renameColumn('name', 'first_name');
-            $table->renameColumn('telephone', 'mobile');
+            $table->renameColumn('phone', 'mobile');
             $table->string('last_name')->nullable();
             $table->string('dob')->nullable(false);
             $table->string('sex',36)->nullable(false);

@@ -20,7 +20,7 @@
 
                         {!! form_errors($errors) !!}
 
-                    @endif
+                    @endif 
 
                   <div class="form-group">
 
@@ -51,7 +51,7 @@
 
                         {!! Form::label('dob',  trans('application.dob')) !!}
 
-                        {!! Form::text('dob', $user->dob, ['class' => 'form-control input-sm', 'required']) !!}
+                        {!! Form::text('dob', $user->dob, ['class' => 'form-control input-sm datepicker', 'required']) !!}
 
                     </div>
 
