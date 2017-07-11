@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+  
 Route::group(['prefix'=>'v1'],function(){
 	//Projects Routers
 	Route::post('/authenticate','Auth\ApiAuthController@authenticate');
@@ -26,6 +26,7 @@ Route::group(['prefix'=>'v1'],function(){
 	Route::put('update/{id}','Projects\ProjectsController@update')->name('projects.update');
 
 	});
+	Route::get('content','Editor\Content\ApiContentController@index');
 	Route::get('treetable','Editor\Project\ProjectController@json');
 	#'middleware'=>'jwt.auth'
 	Route::group(['prefix'=>'users'],function(){
