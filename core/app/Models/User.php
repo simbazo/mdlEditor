@@ -40,4 +40,12 @@ class User extends Authenticatable
     public function content(){
         return $this->hasMany(\App\Models\ProjectContent::class,'uuid','user_created');
     }
+
+    /**
+     * Get the sex associated with the user
+    */
+    public function sex()
+    {
+        return $this->belongsTo(\App\Models\Sex::class, 'uuid','sex_uuid');
+    }
 }

@@ -15,7 +15,7 @@ class ChangetableStructureTusers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->date('dob')->nullable(false)->change(); //CHANGED dob FROM STRING TO DATE
-            $table->integer('sex')->nullable(false)->change();//CHANGED sex FROM STRING TO INTEGER SO IT BECOMES A LOOKUP TO A tSex TABLE - DB NORMALISATION 
+            $table->integer('sex_uuid')->nullable(false)->change();//CHANGED sex FROM STRING TO INTEGER SO IT BECOMES A LOOKUP TO A tSex TABLE - DB NORMALISATION 
             $table->string('email')->unique()->nullable(false)->change(); 
             $table->string('mobile')->unique()->nullable(false)->change();
             $table->renameColumn('secret_question', 'security_question');
