@@ -14,13 +14,12 @@ class CreateDeviceUserTable extends Migration
     public function up()
     {
         Schema::create('device_user', function (Blueprint $table) {
-            $table->string('device_uuid',36);
-            $table->integer('user_uuid', 10);
-            $table->string('model')->nullable();
+            $table->integer('device_uuid')->unsigned();
+            $table->integer('user_uuid')->unsigned();
+            $table->boolean('active')->nullable(false)->default('0');
 
-            /*
             $table->foreign('device_uuid')->references('uuid')->on('devices')->onDelete('cascade');
-            $table->foreign('user_uuid')->references('uuid')->on('users')->onDelete('cascade');*/
+            $table->foreign('user_uuid')->references('uuid')->on('users')->onDelete('cascade');
         });
 
         
@@ -33,6 +32,6 @@ class CreateDeviceUserTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('device_user');
     }
 }
