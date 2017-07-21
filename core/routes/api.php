@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-  
+   
 Route::group(['prefix'=>'v1'],function(){
 	//Projects Routers
 	Route::post('/authenticate','Auth\ApiAuthController@authenticate');
@@ -24,10 +24,21 @@ Route::group(['prefix'=>'v1'],function(){
 	Route::get('/','Projects\ProjectsController@index')->name('projects.index');
 	Route::post('store','Projects\ProjectsController@store')->name('projects.store');
 	Route::put('update/{id}','Projects\ProjectsController@update')->name('projects.update');
-
+  
 	});
 	Route::get('content','Editor\Content\ApiContentController@index');
 	Route::get('treetable','Editor\Project\ProjectController@json');
+	Route::post('content/search','Editor\Content\ApiContentController@search')->name('content.search');
+
+	Route::group(['prefix'=>'forms','namespace'=>'FormsApi'],function(){
+		Route::group(['prefix'=>'manufactures'],function(){
+			Route::get('/','ManufactureApiController@index');
+			Route::post('store','ManufactureApiController@store');
+			Route::patch('updated','ManufactureApiController@update');
+			Route::delete('destroy','ManufactureApiController@destroy');
+			Route::post('/search','ManufactureApiController@search');
+		});
+	});
 	#'middleware'=>'jwt.auth'
 	Route::group(['prefix'=>'users'],function(){
 		Route::get('index','Auth\AuthController@index');

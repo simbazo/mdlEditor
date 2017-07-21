@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Editor\Content;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Content;
+use App\Models\Content; 
 class ApiContentController extends Controller
 {
     protected $content;
 
     public function __construct(Content $content){
         $this->content = $content;
-    }
+    }  
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +19,12 @@ class ApiContentController extends Controller
      */
     public function index() 
     {
-        $content = $this->content->select(['ID','Header','Content'])->whereNotNull('Content')->orderBy('ID','desc')->paginate(500);
+        $content = $this->content->select(['ID','Header','Content'])->whereNotNull('Content')->orderBy('ID','desc')->paginate(150);
         return response()->json(['data'=>$content],201);
+    }
+
+    public function search(){
+        return $this->content->apiSearch();
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Events\UserRegistered;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
@@ -18,6 +20,16 @@ class AppServiceProvider extends ServiceProvider
            \Blade::directive('set', function($expression) {
             list($name, $val) = explode(',', $expression);
             return "<?php {$name} = {$val}; ?>";
+        });
+
+        User::created(function($user){
+           
+            $token = $user->activationToken()->create([
+                'token' => str_random(128),
+                'otp'   => rand(6)
+                ]);
+
+            event(new UserRegistered($user));
         });
     }
 

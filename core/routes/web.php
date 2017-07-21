@@ -15,6 +15,8 @@ Route::group(['prefix'=>'auth'],function(){
 	Route::post('login','Auth\AuthController@postLogin');
 	Route::get('logout','Auth\AuthController@logout')->name('logout');
 });
+Route::get('/activate/token/{token}','Auth\ActivationController@activate')->name('auth.activate');
+Route::get('/activate/resend','Auth\ActivationController@resend')->name('auth.activate.resend');
 
 Route::group(['middleware'=>'auth'],function(){
 	Route::get('/', 'HomeController@index')->name('dashboard');
@@ -64,7 +66,8 @@ Route::group(['middleware'=>'auth'],function(){
 			'ngotype'	=>'NgoTypesController',
 			'races'		=>'RaceController',
 			'sponsors'	=>'SponsorsController',
-			'gender'	=>'GenderController'	
+			'gender'	=>'GenderController',
+			'manufactures'=>'ManufacturesController'	
 			]);        
 		
 		Route::get('farmer/farm/{id}','FarmersController@farm')->name('farmer.farm');

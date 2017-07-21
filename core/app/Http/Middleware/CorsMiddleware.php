@@ -15,7 +15,7 @@ class CorsMiddleware
      */
     public function handle($request, Closure $next)
     { 
-       $domains = ['http://localhost:4200','http://localhost:8100']; 
+       $domains = ['http://localhost:4200','http://localhost:8100','http://mobile.appenberg.co.za:8100','http://mobile.appenberg.co.za']; 
 
         if(isset($request->server()['HTTP_ORIGIN'])){
             $origin = $request->server()['HTTP_ORIGIN'];

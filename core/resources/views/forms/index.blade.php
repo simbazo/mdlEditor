@@ -16,10 +16,11 @@
                   <a class="list-group-item" href="{{route('farms.index')}}">Farm Form</a>
                   <a class="list-group-item" href="{{route('ngos.index')}}">NGOS Form</a>
                   <a class="list-group-item" href="{{route('sponsors.index')}}">Sponsor Form</a>
-                  <a class="list-group-item" href="#">-----</a>
-                  @foreach($products as $product)
+                  <a class="list-group-item" href="{{route('manufactures.index')}}">Manufacture</a>
+                  <!-- @andrew Which Products Are trying to display here! please make sure your changes work before you upload-->
+                  {{-- @foreach($products as $product)
                     <a class="list-group-item" href="{{route('forms.list', $product->id)}}">{{$product->product_name}} Form</a>
-                  @endforeach
+                  @endforeach --}}
                </ul>
             </div>
          </div>
