@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use JWTAuth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,7 @@ class ActivationController extends Controller
 
     	$token->user()->update([
     		'active'=>true
-    	]);
+           ]);
 
     	$token->delete();
 
@@ -27,15 +28,47 @@ class ActivationController extends Controller
     	return redirect('/');
     }
 
+    public function otp($otp){
+
+        $otp = ActivationToken::where('otp',$otp)->first();
+
+
+        if(!count($otp)){
+            return response()->json(['error'=>"The OTP provided is incorrect!"],403);
+        }
+
+        $otp->user()->update([
+            'active' =>true 
+            ]);
+
+        $otp->delete();
+
+        auth()->login($otp->user);
+
+        $token = JWTAuth::fromUser(auth()->user());
+
+        return response()->json(['token' =>$token,'user'=>auth()->user()],201);
+    }
+
     public function resend(Request $request){
     	$user = User::byEmail($request->get('email'))->firstOrFail();
+        $activation = ActivationToken::where('user_uuid',$user->uuid)->get();
 
-    	if($user->active){
-    		return redirect('/');
-    	}
+        if(!count($activation)){
+           $user->activationToken()->create([
+            'token' => str_random(128),
+            'otp'   => mt_rand(100000, 999999)
+            ]);
+       }
 
-    	event(new UserRequestedActivationEmail($user));
+       
+       if($user->active){
+          return redirect('/');
+      }
 
-    	return redirect('/login')->withInfo('Activation email resent.');
-    }
+      event(new UserRequestedActivationEmail($user));
+
+    	//return redirect('/login')->withInfo('Activation email resent.');
+      return response()->json(['msg'=>'Activation email resent'],201);
+  }
 }

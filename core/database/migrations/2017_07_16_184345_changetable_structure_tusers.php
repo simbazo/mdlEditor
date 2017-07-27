@@ -12,7 +12,8 @@ class ChangetableStructureTusers extends Migration
      * @return void
      */
     public function up()
-    {
+    {   
+        /*
         Schema::table('users', function (Blueprint $table) {
             $table->date('dob')->nullable(false)->change(); //CHANGED dob FROM STRING TO DATE
             $table->integer('sex_uuid')->nullable(false)->change();//CHANGED sex FROM STRING TO INTEGER SO IT BECOMES A LOOKUP TO A tSex TABLE - DB NORMALISATION 
@@ -21,7 +22,7 @@ class ChangetableStructureTusers extends Migration
             $table->renameColumn('secret_question', 'security_question');
             $table->renameColumn('secret_answer', 'security_answer'); 
             $table->integer('status_uuid')->nullable(false);//ADDED THIS AS A LOOKUP TO A tStaus TABLE
-        });
+        });*/
     }
 
     /**

@@ -18,7 +18,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username','first_name', 'last_name', 'email', 'mobile', 'password',
         'secret_question', 'secret_answer', 'description', 'avatar',
-        'sex', 'dob', 'user_created','user_updated','user_deleted'
+        'sex_uuid', 'dob', 'user_created','user_updated','user_deleted', 'active'
     ];
     
     /**
@@ -46,6 +46,18 @@ class User extends Authenticatable
     */
     public function sex()
     {
-        return $this->belongsTo(\App\Models\Sex::class, 'uuid','sex_uuid');
+        return $this->belongsTo(\App\Models\Sex::class, 'sex_uuid');
+    }
+
+    public function ActivationToken(){
+        return $this->hasOne(\App\Models\ActivationToken::class,'user_uuid');
+    } 
+
+    public function hasActivatedAccount(){
+        return $this->active;
+    }
+
+    public static function byEmail($email){
+        return static::where('email',$email);
     }
 }

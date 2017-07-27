@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
            
             $token = $user->activationToken()->create([
                 'token' => str_random(128),
-                'otp'   => rand(6)
+                'otp'   => mt_rand(100000, 999999)
                 ]);
 
             event(new UserRegistered($user));

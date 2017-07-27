@@ -31,7 +31,8 @@ class SendActivationToken extends Mailable
      * @return $this
      */
     public function build()
-    {
+    {   
+       
         return $this->subject('MiDigitalLife Account activation')->view('email.auth.activation');
     }
 }

@@ -24,15 +24,17 @@ class UserFormRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name'  =>'required|min:6',
+            'first_name'  =>'required|min:3',
+            'last_name'  =>'required',
+            'phone'     =>'required',
             'email' =>'required|unique:users,email',
-            'password'=>'required',
-            'username'=>'required|unique:users,username'
+            'password'=>'required'
         ];
 
         if($id = $this->user){
             $rules['email'] .=','.$id.',uuid';
             $rules['username'] .=','.$id.',uuid';
+            $rules['phone'] .=','.$id.',uuid';
         }
 
         return $rules;

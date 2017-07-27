@@ -20,6 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix'=>'v1'],function(){
 	//Projects Routers
 	Route::post('/authenticate','Auth\ApiAuthController@authenticate');
+	Route::post('/signup','Auth\ApiAuthController@signup');
+	Route::get('/activate/otp/{otp}','Auth\ActivationController@otp')->name('auth.activate');
+	Route::post('/activate/resend','Auth\ActivationController@resend')->name('auth.resend');
+	Route::get('/profile','Auth\ApiAuthController@profile');
+
 	Route::group(['prefix'=>'projects'],function(){
 	Route::get('/','Projects\ProjectsController@index')->name('projects.index');
 	Route::post('store','Projects\ProjectsController@store')->name('projects.store');
@@ -29,6 +34,10 @@ Route::group(['prefix'=>'v1'],function(){
 	Route::get('content','Editor\Content\ApiContentController@index');
 	Route::get('treetable','Editor\Project\ProjectController@json');
 	Route::post('content/search','Editor\Content\ApiContentController@search')->name('content.search');
+	Route::group(['prefix'=>'gender','namespace'=>'Gender'],function(){
+		Route::get('/','GenderController@index');
+		Route::post('store','GenderController@store');
+	});
 
 	Route::group(['prefix'=>'forms','namespace'=>'FormsApi'],function(){
 		Route::group(['prefix'=>'manufactures'],function(){
