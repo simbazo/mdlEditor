@@ -51,6 +51,7 @@ class ProjectsController extends Controller
     public function store(ProjectFormRequest $request)
     {
         $data = $request->all();
+        $data['Parent_ID'] = 0;
         $data['user_created'] = auth()->user()->uuid;
 
         if($this->project->create($data)){
@@ -88,7 +89,9 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = $this->project->getById($id);
+
+        return view('projects.edit',compact('project'));
     }
 
     /**
@@ -100,7 +103,17 @@ class ProjectsController extends Controller
      */
     public function update(ProjectFormRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $data['Parent_ID'] = 0;
+        $data['user_created'] = auth()->user()->uuid;
+
+        if($this->project->updateById($id, $data)){
+            flash()->success(trans('application.record_updated'));
+
+            return response()->json(['success'=>true,'msg'=>trans('application.record_created')],201);
+        }
+        flash()->error(trans('application.record_failed'));
+            return response()->json(['success'=>false,'msg'=>trans('application.record_failed')],400);
     }
 
     /**

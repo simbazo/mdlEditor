@@ -14,12 +14,15 @@ Route::group(['prefix'=>'auth'],function(){
 	Route::get('login','Auth\AuthController@login');
 	Route::post('login','Auth\AuthController@postLogin');
 	Route::get('logout','Auth\AuthController@logout')->name('logout');
+	Route::get('/login/{service}','Auth\SocialLoginController@redirect');
+	Route::get('/login/{service}/callback','Auth\SocialLoginController@callback');
 });
 Route::get('/activate/token/{token}','Auth\ActivationController@activate')->name('auth.activate');
 Route::get('/activate/resend','Auth\ActivationController@resend')->name('auth.activate.resend');
 
 Route::group(['middleware'=>'auth'],function(){
 	Route::get('/', 'HomeController@index')->name('dashboard');
+	Route::get('home', 'HomeController@index')->name('home');
 	Route::get('/profile', 'Web\ProfileController@edit')->name('profile');
 	Route::post('/profile', 'Web\ProfileController@update');
 	Route::post('/productquestion','Editor\ProductsController@questions')->name('productquestion');
@@ -44,6 +47,7 @@ Route::group(['middleware'=>'auth'],function(){
 	Route::resources([
 		'projectcontent'=>'Web\ProjectsContentController',
 		'projects'		=>'Web\ProjectsController',
+		'navigator'		=>'Navigator\NavigatorController',
 		'users'			=>'Web\UsersController',
 		'content'		=>'Web\ContentController',
 		'tasks'			=>'Web\ProjectTaskController',

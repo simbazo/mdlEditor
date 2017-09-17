@@ -60,4 +60,13 @@ class User extends Authenticatable
     public static function byEmail($email){
         return static::where('email',$email);
     }
+
+    public function social(){
+        return $this->hasMany(UserSocial::class);
+    }
+
+    public function hasSocialLinked($service)
+    {
+        return (bool) $this->social()->where('service',$service)->count();
+    }
 }

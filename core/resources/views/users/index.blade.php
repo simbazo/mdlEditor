@@ -8,14 +8,17 @@
     <div class="col-md-12">
         <div class="panel panel-primary">
                 <div class="panel-heading">
-                   Users List 
-                   <a href="{{ route('users.create') }}" class="btn btn-primary btn-xs pull-right active" data-toggle="ajax-modal"><i class="fa fa-plus-square-o"></i> {{trans('application.new_user')}}</a>
+                  <div class="row">
+                       <div class="col-md-6"><h5>USERS LIST </h5></div>
+                  <div class="col-md-6">
+                       <a href="{{ route('users.create') }}" class="btn btn-primary pull-right active" data-toggle="ajax-modal">NEW USER</a>
+                  </div>
+                  </div>
                 </div>
             <div class="panel-body">
                     <table class="table table-striped table-hover dataTable datatable dtr-inline collapsed" role="grid" aria-describedby="datatable2_info" style="width: 988px;">
                         <thead>
                         <tr>
-                            <th></th>
                             <th>{{trans('application.name')}} </th>
                             <th>{{trans('application.username')}} </th>
                             <th>{{trans('application.email')}} </th>
@@ -25,8 +28,7 @@
                         <tbody>
                         @foreach($users as $user)
                         <tr>
-                            <td></td>
-                            <td>{{ $user->name}} </td>
+                            <td>{{ $user->first_name . ' '. $user->last_name}} </td>
                             <td>{{ $user->username }} </td>
                             <td>{{ $user->email }} </td>
                             <td>

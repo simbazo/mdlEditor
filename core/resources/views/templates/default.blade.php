@@ -23,7 +23,7 @@
          <!-- START panel-->
          <div class="panel panel-dark panel-flat">
             <div class="panel-heading text-center">
-               {{get_company_name()}}
+               <img src="{{asset('assets/img/logos/MDL_logo_original.png')}}" alt="MiDigitalLife" class="img-responsive img-block">
             </div>
 			@yield('content')
          </div>
@@ -34,7 +34,7 @@
             <span>-</span>
             <span>{{get_company_name()}}</span>
             <br>
-            <span>Powered By Midigital</span>
+            <span>Powered By MiDigitalLife</span>
          </div>
       </div>
       <div id="ajax-modal" class="modal fade" tabindex="-1" role="dialog" data-backdrop="static"></div>
@@ -53,5 +53,24 @@
    <script src="{{asset("assets/vendor/parsleyjs/dist/parsley.min.js")}}"></script>
    <!-- =============== APP SCRIPTS ===============-->
    <script src="{{asset("assets/js/app.js")}}"></script>	
+   <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '136474343619203',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();   
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 </body>
 </html>

@@ -34,7 +34,7 @@ class ActivationController extends Controller
 
 
         if(!count($otp)){
-            return response()->json(['error'=>"The OTP provided is incorrect!"],403);
+            return response()->json(['errors'=>"The OTP provided is incorrect!"],422);
         }
 
         $otp->user()->update([

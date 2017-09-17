@@ -2198,9 +2198,13 @@ fieldset[disabled] .btn-pink.focus {
   border-color: #cfdbe2;
 }
 .panel-dark > .panel-heading {
-  color: #fff;
-  background-color: #3a3f51;
-  border-color: #3a3f51;
+   background-color: #3cbf5e;
+   border-color: #3cbf5e;
+   color: #fff;
+}
+.panel-dark > .panel-heading img{
+  height: 70px;
+  width: 100%;
 }
 .panel-dark > .panel-heading + .panel-collapse > .panel-body {
   border-top-color: #cfdbe2;

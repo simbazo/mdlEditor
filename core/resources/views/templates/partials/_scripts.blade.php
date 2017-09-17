@@ -74,13 +74,13 @@
 <script src="{{ asset('assets/vendor/sweetalert/dist/sweetalert.min.js') }}"></script>
     @stack('upload')
 <script src="{{asset('assets/js/bootstrap-editable.min.js')}}"></script>
-<script src="{{asset('assets/js/jquery.treetable.js')}}"></script>
+{{-- <script src="{{asset('assets/js/jquery.treetable.js')}}"></script> --}}
 
    <script src="{{ asset('assets/plugins/chosen/chosen.ajaxaddition.jquery.js') }}"></script>
    <!-- =============== APP SCRIPTS ===============-->
    @stack('datatable')
   @if(isset($content))
-  @include('projectcontent.partials._treegridjs')
+  {{-- @include('projectcontent.partials._treegridjs') --}}
   @endif
    <script src="{{asset('assets/js/app.js')}}"></script>
    <script src="{{asset('assets/js/custom.js')}}"></script>
@@ -240,15 +240,15 @@
 
 
 // initialize treeTable
-$("#example-basic").treetable({
-    expandable:     true,
-    onNodeExpand:   nodeExpand,
-    onNodeCollapse: nodeCollapse
-});
+// $("#example-basic").treetable({
+//     expandable:     true,
+//     onNodeExpand:   nodeExpand,
+//     onNodeCollapse: nodeCollapse
+// });
 
 
-// expand node with ID "1" by default
-$("#example-basic").treetable("reveal", '1');
+// // expand node with ID "1" by default
+// $("#example-basic").treetable("reveal", '1');
 
 
 // Highlight a row when selected

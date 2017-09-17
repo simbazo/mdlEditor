@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $projects = $this->project->where('Active',1)->where('Parent_ID',1)->get();
-        return view('dashboard',compact('projects'));
+        $projects = $this->project->where('Parent_ID',0)->get();
+        return view('navigator.index',compact('projects'));
     }
 
     public function projects(){

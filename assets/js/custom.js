@@ -29,10 +29,10 @@ $(document).ready(function () {
         { "data": "User Created" }
         ],
         "order": [[ 1, 'asc' ]],
-        "bLengthChange": false,
+        "bLengthChange": true,
         "bInfo" : false,
         "bFilter" : false,
-        "bFilter" : false,     
+        "bFilter" : true,     
         "oLanguage": { "sSearch": ""},
     } ); 
     $('.datatable tbody').on('click', 'td.details-control', function () {
@@ -116,7 +116,7 @@ $(document).ready(function () {
             },
             success : function(data){
                 if(data.redirectTo){
-                    $modal.close();   
+                    $('#ajax-modal').modal('toggle');   
                     nodeChilds(data.redirectTo);
                 }else{
                   window.location.reload();  
@@ -559,6 +559,7 @@ $("ul.nav-tabs > li > a").on("shown.bs.tab", function(e) {
   var id = $(e.target).attr("href").substr(1);
   window.location.hash = id;
 });
+$(document.body).tooltip({ selector: "[title]" });
 
 // on load of the page: switch to the currently selected tab
 var hash = window.location.hash;

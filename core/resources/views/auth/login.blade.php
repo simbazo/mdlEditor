@@ -30,10 +30,19 @@
                 </div>
             </div>
 
-        {!! Form::Submit('Login', ['class'=>"btn btn-block btn-primary mt-lg"]) !!}
+        {!! Form::Submit('Login', ['class'=>"btn btn-block btn-success mt-lg"]) !!}
 
         {!! Form::close() !!}
-
-    <p class="pt-lg text-center">Need to Signup?</p><a href="register.html" class="btn btn-block btn-default">Register Now</a>
+         <p class="pt-lg text-center">LOGIN or SIGN UP WITH</p>
+        <div class="row">
+            <div class="col-md-12"><div class="btn-group-justified" id="socialite">
+                 <a href="{{url('auth/login/facebook')}}" class="btn btn-primary">Facebook</a><!--
+             <a href="{{url('auth/login/google')}}" class="btn btn-danger">Google</a>-->
+             <a href="{{url('auth/login/twitter')}}" class="btn btn-info">Twitter</a>
+             <a href="{{url('auth/login/github')}}" class="btn btn-default">Github</a>
+        </div></div>
+        </div>
+    <br>
+   <a href="register.html" class="btn btn-block btn-default">Register With Email</a>
     </div>
 @endsection 

@@ -47,6 +47,9 @@ Route::group(['prefix'=>'v1'],function(){
 			Route::delete('destroy','ManufactureApiController@destroy');
 			Route::post('/search','ManufactureApiController@search');
 		});
+		Route::resources([
+			'ngos'	=>'NgosApiController'
+		]);
 	});
 	#'middleware'=>'jwt.auth'
 	Route::group(['prefix'=>'users'],function(){

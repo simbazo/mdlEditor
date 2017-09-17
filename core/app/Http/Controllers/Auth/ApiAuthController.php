@@ -65,7 +65,7 @@ class ApiAuthController extends Controller
 			$token = JWTAuth::attempt($credentials);
 
 			if(!$token){
-				return response()->json(['error'=>'Invalid Credentials'],401);
+				return response()->json(['error'=>'Your Email or password is incorrect'],401);
 			}
 		}
 		catch(JWTException $e)

@@ -19,6 +19,17 @@ class EventServiceProvider extends ServiceProvider
          'App\Events\UserRequestedActivationEmail' => [
             'App\Listeners\SendActivationEmail',
         ],
+        'App\Events\Social\GithubAccountWasLinked' => [
+            'App\Listeners\Social\SendGithubLinkedEmail',
+        ],
+
+        'App\Events\Social\FacebookAccountWasLinked' => [
+            'App\Listeners\Social\SendFacebookLinkedEmail',
+        ],
+
+        'App\Events\Social\TwitterAccountWasLinked' => [
+            'App\Listeners\Social\SendTwitterLinkedEmail',
+        ],
     ];
 
     /**

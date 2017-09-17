@@ -49,7 +49,9 @@ class ProjectsController extends Controller
             'app_logo'          =>$request->get('app_logo'),
             'short_description' =>$request->get('short_description'),
             'long_description'  =>$request->get('long_description'),
-            'active'            =>$request->get('active')      
+            'active'            =>$request->get('active'),
+            'user_created'      =>auth()->user()->uuid,
+            'Parent_ID'         =>0     
         ];
 
         $project = $this->project->create($data);
@@ -79,7 +81,9 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = $this->project->getById($id);
+
+        return view('projects.edit',compact('project'));
     }
 
     /**

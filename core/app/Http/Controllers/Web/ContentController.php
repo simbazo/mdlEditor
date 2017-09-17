@@ -24,9 +24,11 @@ class ContentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($uuid)
     {
+        $content = $this->content->where('Parent_ID',$uuid)->get();
 
+        return view('navigator.content',compact('content'));
     }
 
     /**

@@ -19,7 +19,7 @@ class ApiContentController extends Controller
      */
     public function index() 
     {
-        $content = $this->content->select(['ID','Header','Content'])->whereNotNull('Content')->orderBy('ID','desc')->paginate(150);
+        $content = $this->content->select(['ID','Header','Content'])->whereNotNull('Content')->orderBy('ID','desc')->paginate(100);
         return response()->json(['data'=>$content],201);
     }
 

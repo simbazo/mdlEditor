@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Editor',
+    'name' => 'MiDigitalLife',
 
     /*
     |--------------------------------------------------------------------------
@@ -175,7 +175,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Cviebrock\ImageValidator\ImageValidatorServiceProvider::class,
-
+        Laravel\Socialite\SocialiteServiceProvider::class,
         /* 
          * Application Service Providers...
          */
@@ -184,6 +184,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\SocialServiceProvider::class,
 
     ],
 
@@ -238,6 +239,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 
