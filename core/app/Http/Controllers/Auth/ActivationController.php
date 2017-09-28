@@ -13,62 +13,79 @@ use App\Events\UserRequestedActivationEmail;
  */
 class ActivationController extends Controller
 {
-    
-    public function activate(ActivationToken $token){
 
-    	$token->user()->update([
-    		'active'=>true
-           ]);
+  public function activate(ActivationToken $token){
 
-    	$token->delete();
+   $token->user()->update([
+    'active'=>true
+  ]);
 
-    	auth()->login($token->user);
+   $token->delete();
 
-
-    	return redirect('/');
-    }
-
-    public function otp($otp){
-
-        $otp = ActivationToken::where('otp',$otp)->first();
+   auth()->login($token->user);
 
 
-        if(!count($otp)){
-            return response()->json(['errors'=>"The OTP provided is incorrect!"],422);
-        }
+   return redirect('/');
+ }
 
-        $otp->user()->update([
-            'active' =>true 
-            ]);
+ public function otp($otp){
 
-        $otp->delete();
+  $otp = ActivationToken::where('otp',$otp)->first();
 
-        auth()->login($otp->user);
 
-        $token = JWTAuth::fromUser(auth()->user());
+  if(!count($otp)){
+    return response()->json(['errors'=>"The OTP provided is incorrect!"],422);
+  }
 
-        return response()->json(['token' =>$token,'user'=>auth()->user()],201);
-    }
+  $otp->user()->update([
+    'active' =>true 
+  ]);
 
-    public function resend(Request $request){
-    	$user = User::byEmail($request->get('email'))->firstOrFail();
-        $activation = ActivationToken::where('user_uuid',$user->uuid)->get();
+  $otp->delete();
 
-        if(!count($activation)){
-           $user->activationToken()->create([
-            'token' => str_random(128),
-            'otp'   => mt_rand(100000, 999999)
-            ]);
-       }
+  auth()->login($otp->user);
 
-       
-       if($user->active){
-          return redirect('/');
-      }
+  $token = JWTAuth::fromUser(auth()->user());
 
-      event(new UserRequestedActivationEmail($user));
+  return response()->json(['token' =>$token,'user'=>auth()->user()],201);
+}
+
+public function resend(Request $request){
+ $user = User::byEmail($request->get('email'))->firstOrFail();
+ $activation = ActivationToken::where('user_uuid',$user->uuid)->get();
+
+ if(!count($activation)){
+   $user->activationToken()->create([
+    'token' => str_random(128),
+    'otp'   => mt_rand(100000, 999999)
+  ]);
+ }
+
+
+ if($user->active){
+  return redirect('/');
+}
+
+event(new UserRequestedActivationEmail($user));
 
     	//return redirect('/login')->withInfo('Activation email resent.');
-      return response()->json(['msg'=>'Activation email resent'],201);
-  }
+return response()->json(['msg'=>'Activation email resent'],201);
+}
+
+public function resetPassword($email){
+  $user = User::byEmail($email)->firstOrFail();
+  $activation = ActivationToken::where('user_uuid',$user->uuid)->get();
+
+  if(!count($activation)){
+   $user->activationToken()->create([
+    'token' => str_random(128),
+    'otp'   => mt_rand(100000, 999999)
+  ]);
+ }
+
+event(new UserRequestedActivationEmail($user));
+
+      //return redirect('/login')->withInfo('Activation email resent.');
+return response()->json(['msg'=>'Reset Password email sent'],201);
+}
 }

@@ -24,6 +24,10 @@ Route::group(['prefix'=>'v1'],function(){
 	Route::get('/activate/otp/{otp}','Auth\ActivationController@otp')->name('auth.activate');
 	Route::post('/activate/resend','Auth\ActivationController@resend')->name('auth.resend');
 	Route::get('/profile','Auth\ApiAuthController@profile');
+	Route::post('/u-profile','Auth\ApiAuthController@update');
+
+	Route::get('/change-passwd/{email}','Auth\ActivationController@resetPassword')->name('resend.otp');
+	Route::post('/change-passwd','Auth\ApiAuthController@changePassword');
 
 	Route::group(['prefix'=>'projects'],function(){
 	Route::get('/','Projects\ProjectsController@index')->name('projects.index');
@@ -38,7 +42,7 @@ Route::group(['prefix'=>'v1'],function(){
 		Route::get('/','GenderController@index');
 		Route::post('store','GenderController@store');
 	});
-
+ 
 	Route::group(['prefix'=>'forms','namespace'=>'FormsApi'],function(){
 		Route::group(['prefix'=>'manufactures'],function(){
 			Route::get('/','ManufactureApiController@index');
@@ -48,7 +52,9 @@ Route::group(['prefix'=>'v1'],function(){
 			Route::post('/search','ManufactureApiController@search');
 		});
 		Route::resources([
-			'ngos'	=>'NgosApiController'
+			'ngos'		=>'NgosApiController',
+			'devices'	=>'DevicesApiController',
+			'icg-users'		=>'IcgUsersController'
 		]);
 	});
 	#'middleware'=>'jwt.auth'

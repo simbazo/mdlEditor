@@ -69,4 +69,8 @@ class User extends Authenticatable
     {
         return (bool) $this->social()->where('service',$service)->count();
     }
+
+    public function device(){
+        return $this->hasMany(UserDevice::class);
+    }
 }
