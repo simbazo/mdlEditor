@@ -33,7 +33,7 @@ Route::group(['prefix'=>'v1'],function(){
 	Route::get('/','Projects\ProjectsController@index')->name('projects.index');
 	Route::post('store','Projects\ProjectsController@store')->name('projects.store');
 	Route::put('update/{id}','Projects\ProjectsController@update')->name('projects.update');
-  
+   
 	});
 	Route::get('content','Editor\Content\ApiContentController@index');
 	Route::get('treetable','Editor\Project\ProjectController@json');
@@ -54,8 +54,10 @@ Route::group(['prefix'=>'v1'],function(){
 		Route::resources([
 			'ngos'		=>'NgosApiController',
 			'devices'	=>'DevicesApiController',
-			'icg-users'		=>'IcgUsersController'
+			'icg-users'	=>'IcgUsersController'
 		]);
+
+		Route::get('icg/users/{pin}','IcgUsersController@pin')->name('icg-pin');
 	});
 	#'middleware'=>'jwt.auth'
 	Route::group(['prefix'=>'users'],function(){

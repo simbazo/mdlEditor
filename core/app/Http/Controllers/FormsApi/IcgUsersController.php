@@ -5,7 +5,9 @@ namespace App\Http\Controllers\FormsApi;
 use App\Models\ICG\IcgUser;
 use Illuminate\Http\Request;
 use App\Models\ICG\IcgActivation;
+use App\Events\IcgUserRegistered;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\IcgFormRequest;
 
 class IcgUsersController extends Controller
 {
@@ -44,7 +46,7 @@ class IcgUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IcgFormRequest $request)
     {
         $icg = new IcgUser;
         $icg->first_name    = $request->get('first_name');
@@ -63,18 +65,37 @@ class IcgUsersController extends Controller
                 'pin'   => mt_rand(100000, 999999)
             ]);
 
-     if($icg)
+     if($icg){
+        event(new IcgUserRegistered($icg));
         return response()->json([
             'data'  =>$icg,
             'pin'   =>$pin,
             'succes'=>true,
             'msg'   =>trans('application.record_created')
         ],201);
-    else
-        return response()->json([
+     }else{
+          return response()->json([
             'success'   =>false,
             'msg'       =>trans('application.record_failed')    
         ],503);
+     }
+      
+}
+
+public function pin($pin){
+    $pin = IcgActivation::where('pin',$pin)->first();
+
+    if(!count($pin)){
+    return response()->json(['errors'=>"The OTP provided is incorrect!"],422);
+  }
+
+  $pin->user()->update([
+    'active' =>true 
+  ]);
+
+  $pin->delete();
+
+  return response()->json(['success'=>true,'msg'=>'Account Activated'],201);
 }
 
     /**
