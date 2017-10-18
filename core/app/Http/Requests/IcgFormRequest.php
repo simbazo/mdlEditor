@@ -25,10 +25,8 @@ class IcgFormRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'first_name' =>'required|min:3',
-            'last_name'  =>'required',
             'dob'        =>'required',
-            'email'      =>'required|unique:icg_users,email',   
+            'email'      =>'required',   
             'sex'        =>'required'
         ];
 
