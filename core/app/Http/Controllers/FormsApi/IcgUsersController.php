@@ -145,7 +145,13 @@ class IcgUsersController extends Controller
         $icg->sex           = $request->get('sex');
         $icg->dob           = $request->get('dob');
         $icg->role          = $request->get('role');
+        $icg->level          = $request->get('level');        
+        $icg->device_id          = $request->get('device_id');
+        $icg->app_id          = $request->get('app_id');
+        $icg->province          = $request->get('province');
+        $icg->country          = $request->get('country');
         $icg->save();
+        
         if($icg)
             return response()->json([
                 'data'      =>$icg,
@@ -165,7 +171,7 @@ class IcgUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    /public function destroy($id)
+    public function destroy($id)
     {
         $icg = IcgUser::findOrFail($id);
         $icg->delete();
