@@ -67,7 +67,8 @@ class IcgUsersController extends Controller
 
         $otp  =  $icg->ActivationToken()->create([
                 'token' => str_random(128),
-                'pin'   => '123456'//mt_rand(100000, 999999)
+                'pin'   => '123456',//mt_rand(100000, 999999),
+                'user_uuid' => $icg->uuid
         ]);
 
          if($icg){
@@ -151,7 +152,7 @@ class IcgUsersController extends Controller
         $icg->province          = $request->get('province');
         $icg->country          = $request->get('country');
         $icg->save();
-        
+
         if($icg)
             return response()->json([
                 'data'      =>$icg,
