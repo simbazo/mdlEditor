@@ -13,9 +13,11 @@ class IcgUsersController extends Controller
 {
     protected $icg;
 
-    public function __construct(IcgUser $icg){
+    public function __construct(IcgUser $icg)
+    {
         $this->icg = $icg;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +48,7 @@ class IcgUsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(IcgFormRequest $request)
+    public function store(Request $request)
     {
         $icg = new IcgUser;
         $icg->first_name    = $request->get('first_name');
@@ -63,43 +65,44 @@ class IcgUsersController extends Controller
         $icg->country       = $request->get('country');
         $icg->save();
 
-        $pin  =  $icg->ActivationToken()->create([
+        $otp  =  $icg->ActivationToken()->create([
                 'token' => str_random(128),
-                'pin'   => mt_rand(100000, 999999)
-            ]);
+                'pin'   => '123456'//mt_rand(100000, 999999)
+        ]);
 
-     if($icg){
-        event(new IcgUserRegistered($icg));
-        return response()->json([
-            'data'  =>$icg,
-            'pin'   =>$pin,
-            'succes'=>true,
-            'msg'   =>trans('application.record_created')
-        ],201);
-     }else{
-          return response()->json([
-            'success'   =>false,
-            'msg'       =>trans('application.record_failed')    
-        ],503);
-     }
-      
-}
+         if($icg){
+            //event(new IcgUserRegistered($icg));
+            return response()->json([
+                'data'  =>$icg,
+                'otp'   =>$otp,
+                'succes'=>true,
+                'msg'   =>trans('application.record_created')
+            ],201);
+         }else{
+              return response()->json([
+                'success'   =>false,
+                'msg'       =>trans('application.record_failed')    
+            ],503);
+         }
+    }
 
-public function pin($pin){
-    $pin = IcgActivation::where('pin',$pin)->first();
+    public function pin($pin)
+    {
+        $pin = IcgActivation::where('pin',$pin)->first();
+        
+        if (!count($pin))
+        {
+            return response()->json(['errors'=>"The OTP provided is incorrect!"],422);
+        }
 
-    if(!count($pin)){
-    return response()->json(['errors'=>"The OTP provided is incorrect!"],422);
-  }
+        $pin->user()->update([
+            'active' =>true 
+        ]);
 
-  $pin->user()->update([
-    'active' =>true 
-  ]);
+      $pin->delete();
 
-  $pin->delete();
-
-  return response()->json(['success'=>true,'msg'=>'Account Activated'],201);
-}
+      return response()->json(['success'=>true,'msg'=>'Account Activated'],201);
+    }
 
     /**
      * Display the specified resource.
@@ -121,7 +124,6 @@ public function pin($pin){
     public function edit($id)
     {
         $icg = IcgUser::findOrFail($id);
-
         return response()->json([
             'data'  =>$icg
         ],201);
@@ -144,7 +146,6 @@ public function pin($pin){
         $icg->dob           = $request->get('dob');
         $icg->role          = $request->get('role');
         $icg->save();
-
         if($icg)
             return response()->json([
                 'data'      =>$icg,
@@ -164,11 +165,10 @@ public function pin($pin){
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    /public function destroy($id)
     {
         $icg = IcgUser::findOrFail($id);
         $icg->delete();
-
         if($icg)
             return response()->json([
                 'msg'   =>trans('application.record_deleted'),
@@ -181,3 +181,4 @@ public function pin($pin){
             ],503);
     }
 }
+    
