@@ -58,6 +58,9 @@ class IcgUsersController extends Controller
         //$icg->pin           = mt_rand(100000, 999999);
         $icg->device_id     = $request->get('device_id');
         $icg->app_id        = $request->get('app_id');
+        $icg->level         = $request->get('level');
+        $icg->province      = $request->get('province');
+        $icg->country       = $request->get('country');
         $icg->save();
 
         $pin  =  $icg->ActivationToken()->create([
