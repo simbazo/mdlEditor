@@ -25,7 +25,6 @@ class PageImpressionFormRequest extends FormRequest
     {
         return [
             'date'=>'required',
-            'user_uuid'=>'required',
             'application_uuid'=>'required',
             'device_uuid'=>'required',
             'node_uuid'=>'required'

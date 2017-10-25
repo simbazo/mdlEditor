@@ -16,7 +16,7 @@ class CreatePageImpressionsTable extends Migration
         Schema::create('page_impressions', function (Blueprint $table) {
             $table->increments('uuid');
             $table->date('date')->nullable(false);
-            $table->integer('user_uuid')->unsigned()->nullable(false);
+            $table->integer('user_uuid')->unsigned()->nullable();
             $table->integer('application_uuid')->unsigned()->nullable(false);
             $table->string('device_uuid')->nullable(false);
             $table->integer('node_uuid')->unsigned()->nullable(false);

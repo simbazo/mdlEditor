@@ -1,23 +1,18 @@
 <?php
-
 namespace App\Http\Controllers\FormsApi;
-
 use App\Models\ICG\IcgUser;
 use Illuminate\Http\Request;
 use App\Models\ICG\IcgActivation;
 use App\Events\IcgUserRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\IcgFormRequest;
-
 class IcgUsersController extends Controller
 {
     protected $icg;
-
     public function __construct(IcgUser $icg)
     {
         $this->icg = $icg;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,12 +21,10 @@ class IcgUsersController extends Controller
     public function index()
     {
         $icg = $this->icg->all();
-
         return response()->json([
             'data'  =>$icg
         ],201);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +34,6 @@ class IcgUsersController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -64,13 +56,12 @@ class IcgUsersController extends Controller
         $icg->province      = $request->get('province');
         $icg->country       = $request->get('country');
         $icg->save();
-
         $otp  =  $icg->ActivationToken()->create([
                 'token' => str_random(128),
                 'pin'   => '123456',//mt_rand(100000, 999999),
+                //'pin'   => mt_rand(100000, 999999),
                 'user_uuid' => $icg->uuid
         ]);
-
          if($icg){
             //event(new IcgUserRegistered($icg));
             return response()->json([
@@ -86,7 +77,6 @@ class IcgUsersController extends Controller
             ],503);
          }
     }
-
     public function pin($pin)
     {
         $pin = IcgActivation::where('pin',$pin)->first();
@@ -95,16 +85,12 @@ class IcgUsersController extends Controller
         {
             return response()->json(['errors'=>"The OTP provided is incorrect!"],422);
         }
-
         $pin->user()->update([
             'active' =>true 
         ]);
-
       $pin->delete();
-
       return response()->json(['success'=>true,'msg'=>'Account Activated'],201);
     }
-
     /**
      * Display the specified resource.
      *
@@ -115,7 +101,6 @@ class IcgUsersController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -129,7 +114,6 @@ class IcgUsersController extends Controller
             'data'  =>$icg
         ],201);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -152,7 +136,6 @@ class IcgUsersController extends Controller
         $icg->province          = $request->get('province');
         $icg->country          = $request->get('country');
         $icg->save();
-
         if($icg)
             return response()->json([
                 'data'      =>$icg,
@@ -165,7 +148,6 @@ class IcgUsersController extends Controller
                 'msg'       =>trans('application.record_failed')
             ],503);
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -188,4 +170,3 @@ class IcgUsersController extends Controller
             ],503);
     }
 }
-    
