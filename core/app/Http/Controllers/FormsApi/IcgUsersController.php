@@ -56,26 +56,27 @@ class IcgUsersController extends Controller
         $icg->province      = $request->get('province');
         $icg->country       = $request->get('country');
         $icg->save();
+
         $otp  =  $icg->ActivationToken()->create([
                 'token' => str_random(128),
-                'pin'   => '123456',//mt_rand(100000, 999999),
-                //'pin'   => mt_rand(100000, 999999),
+                'pin'   => mt_rand(100000, 999999),
                 'user_uuid' => $icg->uuid
-        ]);
-         if($icg){
-            //event(new IcgUserRegistered($icg));
+        );
+
+        if($icg){
+            event(new IcgUserRegistered($icg));
             return response()->json([
                 'data'  =>$icg,
                 'otp'   =>$otp,
                 'succes'=>true,
                 'msg'   =>trans('application.record_created')
             ],201);
-         }else{
+        }else{
               return response()->json([
                 'success'   =>false,
                 'msg'       =>trans('application.record_failed')    
             ],503);
-         }
+        }
     }
     public function pin($pin)
     {

@@ -8,7 +8,7 @@ class IcgUser extends Model
 {
     protected $primaryKey = 'uuid';
 
-    protected $fillable = ['first_name','last_name','email','sex','dob','role','level', 'active','device_id','app_id', 'province', 'country'];
+    protected $fillable = ['first_name','last_name','email','sex','dob','role','level','device_id','app_id', 'province', 'country'];
 
      public function ActivationToken(){
         return $this->hasOne(IcgActivation::class,'user_uuid');
