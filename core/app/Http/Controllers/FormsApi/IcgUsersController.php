@@ -4,11 +4,10 @@ use App\Models\ICG\IcgUser;
 use Illuminate\Http\Request;
 use App\Models\ICG\IcgActivation;
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
 use App\Http\Requests\IcgFormRequest;
-=======
 
->>>>>>> parent of dec83d5... Latest and Updated Editor Code
+
+
 class IcgUsersController extends Controller
 {
     protected $icg;
@@ -16,6 +15,7 @@ class IcgUsersController extends Controller
     {
         $this->icg = $icg;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +28,7 @@ class IcgUsersController extends Controller
             'data'  =>$icg
         ],201);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -37,13 +38,14 @@ class IcgUsersController extends Controller
     {
         //
     }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IcgFormRequest $request)
     {
         $icg = new IcgUser;
         $icg->first_name    = $request->get('first_name');
@@ -61,31 +63,12 @@ class IcgUsersController extends Controller
         $icg->save();
 
         $otp  =  $icg->ActivationToken()->create([
-                'token' => str_random(128),
-<<<<<<< HEAD
-                'pin'   => mt_rand(100000, 999999),
-                'user_uuid' => $icg->uuid
-        );
-=======
-                'pin'   => mt_rand(100000, 999999)
-            ]);
+	                'token' => str_random(128),
+	                'pin'   => mt_rand(100000, 999999),
+	                'user_uuid' => $icg->uuid
+    			]);
 
-     if($icg)
-        return response()->json([
-            'data'  =>$icg,
-            'pin'   =>$pin,
-            'succes'=>true,
-            'msg'   =>trans('application.record_created')
-        ],201);
-    else
-        return response()->json([
-            'success'   =>false,
-            'msg'       =>trans('application.record_failed')    
-        ],503);
-}
->>>>>>> parent of dec83d5... Latest and Updated Editor Code
-
-        if($icg){
+	     if($icg){
             event(new IcgUserRegistered($icg));
             return response()->json([
                 'data'  =>$icg,
@@ -99,7 +82,7 @@ class IcgUsersController extends Controller
                 'msg'       =>trans('application.record_failed')    
             ],503);
         }
-    }
+
     public function pin($pin)
     {
         $pin = IcgActivation::where('pin',$pin)->first();
@@ -114,6 +97,7 @@ class IcgUsersController extends Controller
       $pin->delete();
       return response()->json(['success'=>true,'msg'=>'Account Activated'],201);
     }
+
     /**
      * Display the specified resource.
      *
@@ -124,6 +108,7 @@ class IcgUsersController extends Controller
     {
         //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -137,6 +122,7 @@ class IcgUsersController extends Controller
             'data'  =>$icg
         ],201);
     }
+    
     /**
      * Update the specified resource in storage.
      *
