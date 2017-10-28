@@ -42,7 +42,7 @@ class IcgUsersController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UCGFormRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(IcgFormRequest $request)
