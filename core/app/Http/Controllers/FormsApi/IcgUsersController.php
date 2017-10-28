@@ -62,13 +62,13 @@ class IcgUsersController extends Controller
         $icg->country       = $request->get('country');
         $icg->save();
 
-        $otp  =  $icg->ActivationToken()->create([
-	                'token' => str_random(128),
-	                'pin'   => mt_rand(100000, 999999),
-	                'user_uuid' => $icg->uuid
-    			]);
+        $otp = $icg->ActivationToken()->create([
+                    'token' => str_random(128),
+                    'pin'   => mt_rand(100000, 999999),
+                    'user_uuid' => $icg->uuid
+                ]);
 
-	     if($icg){
+         if($icg){
             event(new IcgUserRegistered($icg));
             return response()->json([
                 'data'  =>$icg,
