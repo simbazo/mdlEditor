@@ -23,7 +23,7 @@ class SendActivationToken extends Mailable
     public function __construct(ActivationToken $token)
     {
         $this->token = $token;
-    } 
+    }
 
     /**
      * Build the message.

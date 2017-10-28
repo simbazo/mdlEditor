@@ -11,16 +11,13 @@ class EventServiceProvider extends ServiceProvider
      * The event listener mappings for the application.
      *
      * @var array
-     */ 
+     */
     protected $listen = [
         'App\Events\UserRegistered' => [
             'App\Listeners\SendActivationEmail',
         ],
          'App\Events\UserRequestedActivationEmail' => [
             'App\Listeners\SendActivationEmail',
-        ],
-         'App\Events\IcgUserRegistered' => [
-            'App\Listeners\SendIcgActivationEmail',
         ],
         'App\Events\Social\GithubAccountWasLinked' => [
             'App\Listeners\Social\SendGithubLinkedEmail',

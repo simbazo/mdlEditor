@@ -3,9 +3,12 @@ namespace App\Http\Controllers\FormsApi;
 use App\Models\ICG\IcgUser;
 use Illuminate\Http\Request;
 use App\Models\ICG\IcgActivation;
-use App\Events\IcgUserRegistered;
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Http\Requests\IcgFormRequest;
+=======
+
+>>>>>>> parent of dec83d5... Latest and Updated Editor Code
 class IcgUsersController extends Controller
 {
     protected $icg;
@@ -59,9 +62,28 @@ class IcgUsersController extends Controller
 
         $otp  =  $icg->ActivationToken()->create([
                 'token' => str_random(128),
+<<<<<<< HEAD
                 'pin'   => mt_rand(100000, 999999),
                 'user_uuid' => $icg->uuid
         );
+=======
+                'pin'   => mt_rand(100000, 999999)
+            ]);
+
+     if($icg)
+        return response()->json([
+            'data'  =>$icg,
+            'pin'   =>$pin,
+            'succes'=>true,
+            'msg'   =>trans('application.record_created')
+        ],201);
+    else
+        return response()->json([
+            'success'   =>false,
+            'msg'       =>trans('application.record_failed')    
+        ],503);
+}
+>>>>>>> parent of dec83d5... Latest and Updated Editor Code
 
         if($icg){
             event(new IcgUserRegistered($icg));
