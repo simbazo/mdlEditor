@@ -54,13 +54,11 @@ Route::group(['prefix'=>'v1'],function(){
 		Route::resources([
 			'ngos'		=>'NgosApiController',
 			'devices'	=>'DevicesApiController',
-<<<<<<< HEAD
 			'icg-users'	=>'IcgUsersController',
 			'pageimpressions' => 'PageImpressionsApiController'
-=======
 			'icg-users'		=>'IcgUsersController'
->>>>>>> parent of dec83d5... Latest and Updated Editor Code
 		]);
+		Route::get('icg/users/{pin}','IcgUsersController@pin')->name('icg-pin');
 	});
 	#'middleware'=>'jwt.auth'
 	Route::group(['prefix'=>'users'],function(){
