@@ -82,7 +82,8 @@ class IcgUsersController extends Controller
                 'msg'       =>trans('application.record_failed')    
             ],503);
         }
-
+    }
+    
     public function pin($pin)
     {
         $pin = IcgActivation::where('pin',$pin)->first();
