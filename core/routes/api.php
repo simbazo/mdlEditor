@@ -55,7 +55,7 @@ Route::group(['prefix'=>'v1'],function(){
 			'ngos'		=>'NgosApiController',
 			'devices'	=>'DevicesApiController',
 			'icg-users'	=>'IcgUsersController',
-			'pageimpressions' => 'PageImpressionsApiController'
+			'pageimpressions' => 'PageImpressionsApiController',
 			'icg-users'		=>'IcgUsersController'
 		]);
 		Route::get('icg/users/{pin}','IcgUsersController@pin')->name('icg-pin');
