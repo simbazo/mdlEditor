@@ -176,6 +176,13 @@ return [
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Cviebrock\ImageValidator\ImageValidatorServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+
+        /*
+         * Service Provider for documenting the API
+         * See https://github.com/mpociot/laravel-apidoc-generator
+         */
+        Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
+
         /* 
          * Application Service Providers...
          */
