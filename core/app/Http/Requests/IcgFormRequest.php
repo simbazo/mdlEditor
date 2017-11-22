@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-#use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Requests\FormRequest;
+use Illuminate\Foundation\Http\FormRequest;
+#use App\Http\Requests\FormRequest;
 
 class IcgFormRequest extends FormRequest
 {
@@ -25,14 +25,13 @@ class IcgFormRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'dob'        =>'required',
             'email'      =>'required',   
             'sex'        =>'required'
         ];
 
-         if($id = $this->uuid){
+        /*if($id = $this->uuid){
             $rules['email'] .=','.$id.',uuid';
-        }
+        }*/
 
         return $rules;
     }

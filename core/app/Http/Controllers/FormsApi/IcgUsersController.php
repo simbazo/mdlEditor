@@ -1,11 +1,11 @@
 <?php
 namespace App\Http\Controllers\FormsApi;
-use App\Models\ICG\IcgUser;
-use Illuminate\Http\Request;
-use App\Models\ICG\IcgActivation;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\IcgFormRequest;
 
+use Illuminate\Http\Request;
+use App\Http\Requests\IcgFormRequest;
+use App\Http\Controllers\Controller;
+use App\Models\ICG\IcgUser;
+use App\Models\ICG\IcgActivation;
 
 
 class IcgUsersController extends Controller
@@ -53,6 +53,7 @@ class IcgUsersController extends Controller
         $icg->email         = $request->get('email');
         $icg->sex           = $request->get('sex');
         $icg->dob           = $request->get('dob');
+        $icg->age           = $request->get('age');
         $icg->role          = $request->get('role');
         //$icg->pin           = mt_rand(100000, 999999);
         $icg->device_id     = $request->get('device_id');
@@ -139,13 +140,16 @@ class IcgUsersController extends Controller
         $icg->email         = $request->get('email');
         $icg->sex           = $request->get('sex');
         $icg->dob           = $request->get('dob');
+        $icg->age           = $request->get('age');
         $icg->role          = $request->get('role');
-        $icg->level          = $request->get('level');        
-        $icg->device_id          = $request->get('device_id');
-        $icg->app_id          = $request->get('app_id');
-        $icg->province          = $request->get('province');
-        $icg->country          = $request->get('country');
+        //$icg->pin           = mt_rand(100000, 999999);
+        $icg->device_id     = $request->get('device_id');
+        $icg->app_id        = $request->get('app_id');
+        $icg->level         = $request->get('level');
+        $icg->province      = $request->get('province');
+        $icg->country       = $request->get('country');
         $icg->save();
+
         if($icg)
             return response()->json([
                 'data'      =>$icg,
