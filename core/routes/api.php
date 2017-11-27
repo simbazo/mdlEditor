@@ -35,9 +35,16 @@ Route::group(['prefix'=>'v1'],function() {
 		Route::put('update/{id}','Projects\ProjectsController@update')->name('projects.update');
 	});
 
-	//LookupKeys Routes
-	Route::group(['prefix'=>'lookupkeys'],function() {
-		Route::get('/','Editor\Content\ApiLookupKeyController@index')->name('lookupkeys.index');
+	//Content Routes
+	Route::group(['prefix'=>'contentapi', 'namespace'=>'Content'],function() {
+			Route::get('/', 'ApiContentController@index')->name('contentapi.index');
+			Route::post('/search', 'ApiContentController@search')->name('contentapi.search');
+
+			//LookupKeys Routes
+			Route::group(['prefix'=>'lookupkey'],function() {
+				Route::get('/','ApiLookupKeyController@index')->name('contentapi.lookupkey.index');
+				Route::post('/search','ApiLookupKeyController@search')->name('content.lookupkey.search');
+			});
 	});
 
 	Route::get('content','Editor\Content\ApiContentController@index');

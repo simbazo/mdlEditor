@@ -45,8 +45,23 @@ class LookupKeyTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('lookupkey')->delete();
+
         App\Models\LookupKey::create(['key' => 'icd10']);
         App\Models\LookupKey::create(['key' => 'context']);
         App\Models\LookupKey::create(['key' => 'date']);
+        App\Models\LookupKey::create(['key' => 'title']);
+        App\Models\LookupKey::create(['key' => 'related_nodes']);
+        App\Models\LookupKey::create(['key' => 'related_urls']);
+        App\Models\LookupKey::create(['key' => 'marker']);
+        App\Models\LookupKey::create(['key' => 'index']);
+        App\Models\LookupKey::create(['key' => 'schedule']);
+        App\Models\LookupKey::create(['key' => 'inn']);
+        App\Models\LookupKey::create(['key' => 'innname']);
+        App\Models\LookupKey::create(['key' => 'tradename']);
+        App\Models\LookupKey::create(['key' => 'pathogen']);
+        App\Models\LookupKey::create(['key' => 'drugname']);
+        App\Models\LookupKey::create(['key' => 'figure']);
+        App\Models\LookupKey::create(['key' => 'table']);
     }
 }
