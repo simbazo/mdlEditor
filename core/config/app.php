@@ -180,9 +180,10 @@ return [
         /*
          * Service Provider for documenting the API
          * See https://github.com/mpociot/laravel-apidoc-generator
+        */
         
         Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
-         */
+         
 
         /* 
          * Application Service Providers...

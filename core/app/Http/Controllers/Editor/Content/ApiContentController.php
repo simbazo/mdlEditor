@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Editor\Content;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Content; 
+
 class ApiContentController extends Controller
 {
     protected $content;

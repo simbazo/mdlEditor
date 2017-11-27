@@ -1,0 +1,104 @@
+<?php
+namespace App\Http\Controllers\Editor\Content;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\LookupKeyFormRequest;
+use App\Models\Content\LookupKey;
+
+/**
+ * @resource Lookup keys
+ *
+ * Lookup keys index the Content table. Each node in the tContent table may be indexed with zero or more lookup keys, depending on the type of information stored in that node.
+ *
+ * Example:
+ * 
+ */
+class ApiLookupController extends Controller
+{
+    protected $lookupkey;
+
+    public function __construct(Content $lookupkey){
+        $this->lookupkey = $lookupkey;
+    }  
+    /**
+     * Display a list of lookup keys in alphabetical order.
+     *
+     * Columns returned are:
+     *  - uuid
+     *  - key
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index() 
+    {
+        $lookupkey = $this->lookupkey->select(['uuid','key')->orderBy('key','asc')->paginate(100);
+        return response()->json(['data'=>$lookupkey], 201);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}

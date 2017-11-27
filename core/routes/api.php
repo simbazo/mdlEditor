@@ -17,8 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
    
-Route::group(['prefix'=>'v1'],function(){
-	//Projects Routers
+Route::group(['prefix'=>'v1'],function() {	
 	Route::post('/authenticate','Auth\ApiAuthController@authenticate');
 	Route::post('/signup','Auth\ApiAuthController@signup');
 	Route::get('/activate/otp/{otp}','Auth\ActivationController@otp')->name('auth.activate');
@@ -29,12 +28,18 @@ Route::group(['prefix'=>'v1'],function(){
 	Route::get('/change-passwd/{email}','Auth\ActivationController@resetPassword')->name('resend.otp');
 	Route::post('/change-passwd','Auth\ApiAuthController@changePassword');
 
-	Route::group(['prefix'=>'projects'],function(){
-	Route::get('/','Projects\ProjectsController@index')->name('projects.index');
-	Route::post('store','Projects\ProjectsController@store')->name('projects.store');
-	Route::put('update/{id}','Projects\ProjectsController@update')->name('projects.update');
-  
+	//Projects Routes
+	Route::group(['prefix'=>'projects'],function() {
+		Route::get('/','Projects\ProjectsController@index')->name('projects.index');
+		Route::post('store','Projects\ProjectsController@store')->name('projects.store');
+		Route::put('update/{id}','Projects\ProjectsController@update')->name('projects.update');
 	});
+
+	//LookupKeys Routes
+	Route::group(['prefix'=>'lookupkeys'],function() {
+		Route::get('/','Editor\Content\ApiLookupKeyController@index')->name('lookupkeys.index');
+	});
+
 	Route::get('content','Editor\Content\ApiContentController@index');
 	Route::get('treetable','Editor\Project\ProjectController@json');
 	Route::post('content/search','Editor\Content\ApiContentController@search')->name('content.search');
