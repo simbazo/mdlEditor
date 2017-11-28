@@ -53,7 +53,7 @@ class ApiContentController extends Controller
      *       "last_page": 10217,
      *       "next_page_url": "http://xxx.xxx/api/v1/contentapi?page=2",
      *       "path": "http://xxx.xx/api/v1/contentapi",
-     *       "per_page": 2,
+     *       "per_page": 100,
      *       "prev_page_url": null,
      *       "to": 2,
      *       "total": 20433
@@ -63,7 +63,7 @@ class ApiContentController extends Controller
      */
     public function index() 
     {
-        $content = $this->content->select(['ID', 'Header'])->whereNotNull('Header')->orderBy( 'Header', 'asc')->paginate(2);
+        $content = $this->content->select(['ID', 'Header'])->whereNotNull('Header')->orderBy( 'Header', 'asc')->paginate(5);
         return response()->json(['data'=>$content], 201);
     }
 
@@ -152,14 +152,25 @@ class ApiContentController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display content
+     *
+     * Displays the following fields:
+     *  - Parent_ID
+     *  - Header
+     *  - Content
+     *
+     * Note:
+     *  - The Content field contains HTML markup.
+     *  - Currently all images embedded in the content have invalid URLs. This will be corrected once a location has been established to house all images and - in the future - other media formats.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response as JSON
      */
     public function show($id)
     {
-        //
+        $content = $this->content->select('Parent_ID', 'Header', 'Content')->findOrFail($id);
+
+        return response()->json(['data'=>$content], 201);
     }
 
     /**

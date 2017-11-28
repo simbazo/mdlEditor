@@ -39,6 +39,7 @@ Route::group(['prefix'=>'v1'],function() {
 	Route::group(['prefix'=>'contentapi', 'namespace'=>'Content'],function() {
 			Route::get('/', 'ApiContentController@index')->name('contentapi.index');
 			Route::post('/search', 'ApiContentController@search')->name('contentapi.search');
+			Route::get('/{id}', 'ApiContentController@show')->name('contentapi.show');
 
 			//LookupKeys Routes
 			Route::group(['prefix'=>'lookupkey'],function() {
